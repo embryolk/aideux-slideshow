@@ -25,7 +25,7 @@ var Slideshow = function(images, container){
 			self.advance();
 		}
 	}).click(function(ev){
-		if( ev.pageX < $(window).width() ){
+		if( ev.pageX < ($(window).width()/2) ){
 			self.retreat();
 		} else {
 			self.advance();
