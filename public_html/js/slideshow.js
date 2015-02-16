@@ -38,10 +38,12 @@ Slideshow.prototype = {
 	advance: function(){
 		if( this.currentLocation < this.images.length-1 ){
 			this.currentLocation++;
-			this.container.animate({
-				"left": -(this.currentLocation*100)+"vw"
-			}, 300);
+		} else {
+			this.currentLocation = 0;
 		}
+		this.container.animate({
+			"left": -(this.currentLocation*100)+"vw"
+		}, 300);
 	},
 	retreat: function(){
 		if( this.currentLocation > 0 ){
