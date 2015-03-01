@@ -1,6 +1,6 @@
 $heading_height: 46px;
 $logo_height: $heading_height - 16px;
-$link_font_size: 16px;
+$link_font_size: 14px;
 $link_padding: 36px;
 
 body{
@@ -47,7 +47,7 @@ body{
 }
 
 
-#slideshow{
+#show{
     position: absolute;
     left: 0;
     top: $heading_height+14px;
@@ -56,15 +56,26 @@ body{
     margin: 0;
     overflow: hidden;
     font-family: 'EB Garamond', serif;
-    
     .slide{
         width: 100vw;
         height: 100vh;
-        float: left;
         margin: 0;
         padding: 0;
         background-size: cover;
         background-repeat: no-repeat;
+    }
+    
+    &.slideshow{
+        .slide{
+            float: left;
+        }
+    }
+    &.fadeshow{
+        .slide{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     }
 }
 
