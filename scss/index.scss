@@ -1,6 +1,6 @@
 $heading_height: 46px;
 $logo_height: $heading_height - 16px;
-$link_font_size: 14px;
+$link_font_size: 13px;
 $link_padding: 36px;
 
 body{
@@ -15,7 +15,7 @@ body{
     left: 0;
     right: 0;
     height: $heading_height;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Crimson Text', serif;
     
     .logo{
         float: left;
@@ -30,17 +30,21 @@ body{
         height: 100%;
         float: right;
         .link{
-            padding-right: $link_padding;
+            margin-right: $link_padding;
+            margin-top: $heading_height - $link_font_size;
+            padding-bottom: 5px;
             font-size: $link_font_size;
             font-style: italic;
             height: $link_font_size;
-            margin-top: $heading_height - $link_font_size;
             vertical-align: bottom;
             display: inline-block;
             color: #000;
             text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
             &:hover{
                 color: #777;
+                border-bottom-color: #777;
             }
         }
     }
