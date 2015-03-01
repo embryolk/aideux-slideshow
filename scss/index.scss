@@ -1,0 +1,80 @@
+$heading_height: 46px;
+$logo_height: $heading_height - 16px;
+$link_font_size: 16px;
+$link_padding: 36px;
+
+body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    cursor: pointer;
+}
+
+#heading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $heading_height;
+    font-family: 'EB Garamond', serif;
+    
+    .logo{
+        float: left;
+        background-image: url('../icons/logo.svg');
+        background-repeat: no-repeat;
+        height: $logo_height;
+        width: 240px;
+        margin-top: $heading_height - $logo_height;
+        margin-left: 24px;
+    }
+    .links{
+        height: 100%;
+        float: right;
+        .link{
+            padding-right: $link_padding;
+            font-size: $link_font_size;
+            font-style: italic;
+            height: $link_font_size;
+            margin-top: $heading_height - $link_font_size;
+            vertical-align: bottom;
+            display: inline-block;
+            color: #000;
+            text-decoration: none;
+            &:hover{
+                color: #555;
+            }
+        }
+    }
+}
+
+
+#slideshow{
+    position: absolute;
+    left: 0;
+    top: $heading_height+14px;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'EB Garamond', serif;
+    
+    .slide{
+        width: 100vw;
+        height: 100vh;
+        float: left;
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+#social{
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    a{
+        margin-left: 24px;
+        color: #555;
+    }
+}

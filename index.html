@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+        <link href="css/index.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="js/heading.js"></script>
+        <script type="text/javascript" src="js/slideshow.js"></script>
+
+    </head>
+    <body>
+        <div id="heading"></div>
+
+        <div id="slideshow"></div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var heading = new Heading($("#heading"));
+
+                var slides = [
+                    "images/home-bg01.jpg",
+                    "images/home-bg02.jpg",
+                    "images/home-bg03.jpg"
+                ];
+
+                var slideshow = new Slideshow(slides, $("#slideshow"));
+            });
+        </script>
+        
+        <div id="social">
+            <a class="fa fa-lg fa-pinterest-p"></a>
+            <a class="fa fa-lg fa-facebook"></a>
+            <a class="fa fa-lg fa-instagram"></a>
+        </div>
+        
+    </body>
+</html>
