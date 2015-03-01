@@ -3,13 +3,16 @@ $logo_height: $heading_height - 16px;
 $link_font_size: 12px;
 $link_padding: 36px;
 
+$haze_color: rgba(255,255,255,0.5);
+$haze_width: 360px;
+
 body{
     margin:0;
     padding:0;
     overflow:hidden;
 }
 
-#heading{
+#header{
     position: absolute;
     top: 0;
     left: 0;
@@ -51,16 +54,35 @@ body{
     }
 }
 
+#footer{
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    a{
+        cursor: pointer;
+        margin-left: 24px;
+        color: #333;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        &:hover{
+            color: #000;
+        }
+    }
+}
 
-#show{
+.content{
     position: absolute;
     left: 0;
     top: $heading_height+14px;
     bottom: 0;
+    right: 0;
     padding: 0;
     margin: 0;
     overflow: hidden;
     font-family: 'EB Garamond', serif;
+}
+
+#show{
     .slide{
         width: 100vw;
         height: 100vh;
@@ -84,18 +106,51 @@ body{
     }
 }
 
-#footer{
-    position: fixed;
-    right: 12px;
-    bottom: 12px;
-    a{
-        cursor: pointer;
-        margin-left: 24px;
-        color: #333;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        &:hover{
-            color: #000;
+
+.backdrop{
+    &.about{
+        background-image: url('../images/about-bg.jpg');
+    }
+    &.contact{
+        background-image: url('../images/contact-bg.jpg');
+    }
+}
+
+
+
+$haze_width: 270px;
+$haze_padding: 72px;
+$haze_margin: 5px;
+
+.haze{
+    border: 5px solid $haze_color;
+    background-color: transparent;
+    margin: 72px auto;
+    width: $haze_width + (2*$haze_padding) + (2*$haze_margin);
+    .words{
+        background-color: $haze_color;
+        margin: $haze_margin;
+        padding-left: $haze_padding;
+        padding-right: $haze_padding;
+        padding-top: $haze_padding/1.5;
+        padding-bottom: $haze_padding/1.5;
+        width: $haze_width;
+        font-size: 1em;
+        line-height: 1.5em;
+        .define{
+            font-size: 1.5em;
+            font-weight: bold;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            margin-right: 0.3em;
+        }
+        .pronounce{
+            margin-right: 0.2em;
+            font-style: italic;
+        }
+        p{
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
         }
     }
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>aideux | about</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <link href="../bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!--<link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>-->
+        <link href='http://fonts.googleapis.com/css?family=Crimson+Text:600italic' rel='stylesheet' type='text/css'>
+        <link href="../css/index.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/header-footer.js"></script>
+
+    </head>
+    <body>
+        <div id="header"></div>
+
+        <div class='backdrop content about'>
+            <div class='haze'>
+                <div class='words'>
+                    <p>
+                        <span class='define'>aideux</span>
+                        <span class='pronounce'>/ i-do /</span> 
+                        is a creative bridal studio based in New York.
+                    </p>
+                    <p>
+                        We seek to challenge traditional bridal-wear by focusing on reason behind style: fit, poise, and romance. Each piece in our collection of separates is an interpretation of art and textiles. Fine silks, lace, and other luxurious fabrics converge into clean, delicate design. 
+                    </p>
+                    <p>
+                        Guided by form and material, we aim to ignite emotion through sophisticated pieces that the bride and her party will wear in truth and beauty.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="footer"></div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var header = new Header($("#header"));
+                var footer = new Footer($("#footer"));
+            });
+        </script>
+        
+    </body>
+</html>

@@ -1,7 +1,10 @@
 var Header = function(container){
 	this.$container = $(container);
 
-	$("<div/>",{ "class" : "logo" }).appendTo(this.$container);
+	$("<a/>",{ 
+		"class" : "logo",
+		"href": '/aideux-slideshow'
+	}).appendTo(this.$container);
 	
 	var links = $("<div/>",{ "class": "links" });
 	for( var i in Header.LINKS ){
@@ -17,12 +20,12 @@ var Header = function(container){
 };
 
 Header.LINKS = [
-	{title:"Collections", url:"collections"},
-	{title:"Ordering Process", "url": "ordering"},
+	{title:"Collections", url:"/aideux-slideshow/collections"},
+	{title:"Ordering Process", "url": "/aideux-slideshow/ordering"},
 	//{title:"Stocklists", "url": "stocklists"},
-	{title:"About", "url": "about"},
+	{title:"About", "url": "/aideux-slideshow/about"},
 	//{title:"Press", "url": "press"},
-	{title:"Contact", "url": "contact"}
+	{title:"Contact", "url": "/aideux-slideshow/contact"}
 ];
 
 

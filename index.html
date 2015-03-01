@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>aideux</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
 
@@ -21,15 +21,15 @@ and open the template in the editor.
 
     </head>
     <body>
-        <div id="heading"></div>
+        <div id="header"></div>
 
-        <div id="show" class="fadeshow"></div>
+        <div id="show" class="fadeshow content"></div>
         
         <div id="footer"></div>
 
         <script type="text/javascript">
             $(document).ready(function() {
-                var header = new Header($("#heading"));
+                var header = new Header($("#header"));
                 var footer = new Footer($("#footer"));
 
                 var slides = [
@@ -37,7 +37,6 @@ and open the template in the editor.
                     "images/home-bg02.jpg",
                     "images/home-bg03.jpg"
                 ];
-
                 var fadeshow = new Fadeshow(slides, $("#show"));
             });
         </script>
