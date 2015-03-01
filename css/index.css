@@ -69,7 +69,7 @@ body {
   #footer a {
     cursor: pointer;
     margin-left: 24px;
-    color: #777;
+    color: #333;
     text-decoration: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000380}}
     #footer a:hover {
