@@ -7,7 +7,6 @@ body{
     margin:0;
     padding:0;
     overflow:hidden;
-    cursor: pointer;
 }
 
 #heading{
@@ -41,7 +40,7 @@ body{
             color: #000;
             text-decoration: none;
             &:hover{
-                color: #555;
+                color: #777;
             }
         }
     }
@@ -74,7 +73,11 @@ body{
     right: 12px;
     bottom: 12px;
     a{
+        cursor: pointer;
         margin-left: 24px;
-        color: #555;
+        color: #777;
+        &:hover{
+            color: #000;
+        }
     }
 }

@@ -17,7 +17,7 @@ var Slideshow = function(images, container){
 	this.currentLocation = 0;
 	
 	var self = this;
-	$(document).keydown(function(ev){
+	$(container).keydown(function(ev){
 		var move = false;
 		if( ev.which === 37 ) { // left
 			self.retreat();
