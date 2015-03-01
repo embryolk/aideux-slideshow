@@ -1,6 +1,6 @@
 $heading_height: 46px;
 $logo_height: $heading_height - 16px;
-$link_font_size: 13px;
+$link_font_size: 12px;
 $link_padding: 36px;
 
 body{
@@ -32,19 +32,20 @@ body{
         .link{
             margin-right: $link_padding;
             margin-top: $heading_height - $link_font_size;
-            padding-bottom: 5px;
+            padding-bottom: 3px;
+            letter-spacing: 0.05em;
             font-size: $link_font_size;
             font-style: italic;
             height: $link_font_size;
             vertical-align: bottom;
             display: inline-block;
-            color: #000;
+            color: #333;
             text-decoration: none;
             border-bottom: 1px solid transparent;
             transition: all 0.3s ease;
             &:hover{
-                color: #777;
-                border-bottom-color: #777;
+                color: #000;
+                border-bottom-color: #000;
             }
         }
     }
@@ -92,6 +93,7 @@ body{
         margin-left: 24px;
         color: #333;
         text-decoration: none;
+        transition: all 0.3s ease;
         &:hover{
             color: #000;
         }
