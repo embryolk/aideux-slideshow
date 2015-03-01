@@ -15,7 +15,7 @@ and open the template in the editor.
         <link href="css/index.css" rel="stylesheet" type="text/css">
 
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="js/heading.js"></script>
+        <script type="text/javascript" src="js/header-footer.js"></script>
         <script type="text/javascript" src="js/slideshow.js"></script>
 
     </head>
@@ -23,10 +23,13 @@ and open the template in the editor.
         <div id="heading"></div>
 
         <div id="slideshow"></div>
+        
+        <div id="footer"></div>
 
         <script type="text/javascript">
             $(document).ready(function() {
-                var heading = new Heading($("#heading"));
+                var header = new Header($("#heading"));
+                var footer = new Footer($("#footer"));
 
                 var slides = [
                     "images/home-bg01.jpg",
@@ -37,12 +40,6 @@ and open the template in the editor.
                 var slideshow = new Slideshow(slides, $("#slideshow"));
             });
         </script>
-        
-        <div id="social">
-            <a class="fa fa-lg fa-pinterest-p"></a>
-            <a class="fa fa-lg fa-facebook"></a>
-            <a class="fa fa-lg fa-instagram"></a>
-        </div>
         
     </body>
 </html>

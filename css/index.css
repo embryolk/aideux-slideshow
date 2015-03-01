@@ -61,15 +61,16 @@ body {
     background-repeat: no-repeat; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000371}}
-#social {
+#footer {
   position: fixed;
   right: 12px;
   bottom: 12px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000375}}
-  #social a {
+  #footer a {
     cursor: pointer;
     margin-left: 24px;
-    color: #777; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000379}}
-    #social a:hover {
+    color: #777;
+    text-decoration: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000380}}
+    #footer a:hover {
       color: #000; }
