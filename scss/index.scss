@@ -9,7 +9,7 @@ $haze_width: 360px;
 body{
     margin:0;
     padding:0;
-    overflow:hidden;
+    overflow-x: hidden;
 }
 
 #header{
@@ -78,7 +78,7 @@ body{
     right: 0;
     padding: 0;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: 'EB Garamond', serif;
 }
 
@@ -107,6 +107,9 @@ body{
 }
 
 
+
+/*   content of page   */
+
 .backdrop{
     &.about{
         background-image: url('../images/about-bg.jpg');
@@ -116,34 +119,47 @@ body{
     }
 }
 
+h2{
+    font-size: 1.4em;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    margin-right: 0.3em;
+    display: inline;
+}
+h3{
+    font-size: 0.8em;
+    font-weight: normal;
+    text-transform: capitalize;
+    margin: 0.2em 0;
+}
+.clearfix{
+    display: block;
+    clear: both;
+}
+.centered{
+    text-align: center;
+}
 
-
-$haze_width: 270px;
-$haze_padding: 72px;
+$haze_width: 280px;
+$haze_padding: 48px;
 $haze_margin: 5px;
+$ditch_width: 10px;
+$haze_input_padding: 5px;
 
 .haze{
     border: 5px solid $haze_color;
     background-color: transparent;
-    margin: 72px auto;
+    margin: $haze_padding auto;
     width: $haze_width + (2*$haze_padding) + (2*$haze_margin);
-    .words{
+    .cloud{
         background-color: $haze_color;
         margin: $haze_margin;
-        padding-left: $haze_padding;
-        padding-right: $haze_padding;
-        padding-top: $haze_padding/1.5;
-        padding-bottom: $haze_padding/1.5;
+        padding: ($haze_padding/1.5) $haze_padding;
         width: $haze_width;
         font-size: 1em;
         line-height: 1.5em;
-        .define{
-            font-size: 1.5em;
-            font-weight: bold;
-            font-style: italic;
-            letter-spacing: 0.05em;
-            margin-right: 0.3em;
-        }
+        
         .pronounce{
             margin-right: 0.2em;
             font-style: italic;
@@ -152,5 +168,43 @@ $haze_margin: 5px;
             margin-top: 1.2em;
             margin-bottom: 1.2em;
         }
+    }
+    .form{
+        overflow: hidden;
+        input, textarea{
+            background-color: $haze_color;
+            border: none;
+            margin: $haze_input_padding 0px;
+            padding: $haze_input_padding;
+            font-size: 16px;
+            line-height: 20px;
+            font-family: EB Garamond, serif;
+            &:focus{
+                background-color: #FFF;
+            }
+        }
+        input{
+            float: left;
+            width: ($haze_width/2) - ($ditch_width/2) - ($haze_input_padding*2);
+        }
+        .ditch{
+            float: left;
+            width: $ditch_width;
+            height: 1px;
+            display: inline-block;
+        }
+        textarea{
+            width: $haze_width - ($haze_input_padding*2);
+            overflow-x: hidden;
+        }
+        .contactSection{
+            width: ($haze_width - $ditch_width) / 2;
+            float: left;
+        }
+    }
+    .logical{
+        margin: 10px 0px;
+        font-size: 14px;
+        font-style: italic;
     }
 }
