@@ -3,8 +3,6 @@ $logo_height: $heading_height - 16px;
 $link_font_size: 12px;
 $link_padding: 36px;
 
-$haze_color: rgba(255,255,255,0.5);
-$haze_width: 360px;
 
 body{
     margin:0;
@@ -141,6 +139,12 @@ h3{
     text-align: center;
 }
 
+
+
+
+$haze_color: rgba(255,255,255,0.5);
+$haze_focus_color: rgba(255,255,255,0.7);
+$haze_width: 360px;
 $haze_width: 280px;
 $haze_padding: 48px;
 $haze_margin: 5px;
@@ -172,6 +176,7 @@ $haze_input_padding: 5px;
     .form{
         overflow: hidden;
         input, textarea{
+            float: left;
             background-color: $haze_color;
             border: none;
             margin: $haze_input_padding 0px;
@@ -179,12 +184,13 @@ $haze_input_padding: 5px;
             font-size: 16px;
             line-height: 20px;
             font-family: EB Garamond, serif;
+            color: #777;
             &:focus{
-                background-color: #FFF;
+                background-color: $haze_focus_color;
+                color: #000;
             }
         }
         input{
-            float: left;
             width: ($haze_width/2) - ($ditch_width/2) - ($haze_input_padding*2);
         }
         .ditch{
@@ -196,6 +202,13 @@ $haze_input_padding: 5px;
         textarea{
             width: $haze_width - ($haze_input_padding*2);
             overflow-x: hidden;
+        }
+        .button{
+            background-color: #fff;
+            float: right;
+            margin: $haze_input_padding 0px;
+            padding: $haze_input_padding/2 $haze_input_padding;
+            cursor: pointer;
         }
         .contactSection{
             width: ($haze_width - $ditch_width) / 2;
