@@ -37,13 +37,14 @@ var Footer = function(container){
 		var linkObj = Footer.LINKS[i];
 		$("<a/>",{
 			"class":"fa fa-lg "+linkObj.icon,
-			"href": linkObj.url
+			"href": linkObj.url,
+			"target": '_blank'
 		}).appendTo(container);
 	}
 };
 
 Footer.LINKS = [
-	{icon:"fa-pinterest-p", url: ""},
-	{icon:"fa-facebook", url: ""},
-	{icon:"fa-instagram", url: ""}
+	{icon:"fa-pinterest-p", url: "https://www.pinterest.com/aideux/"},
+	{icon:"fa-facebook", url: "https://www.facebook.com/aideux"},
+	{icon:"fa-instagram", url: "https://instagram.com/aideuxny/"}
 ];

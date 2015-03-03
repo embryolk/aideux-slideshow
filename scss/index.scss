@@ -3,6 +3,17 @@ $logo_height: $heading_height - 16px;
 $link_font_size: 12px;
 $link_padding: 36px;
 
+@mixin linkable{
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+    transition: all 0.3s ease;
+    &:hover{
+        color: #000;
+        border-bottom-color: #000;
+    }
+}
 
 html, body{
     margin:0;
@@ -34,21 +45,13 @@ html, body{
         .link{
             margin-right: $link_padding;
             margin-top: $heading_height - $link_font_size;
-            padding-bottom: 3px;
             letter-spacing: 0.05em;
             font-size: $link_font_size;
             font-style: italic;
             height: $link_font_size;
             vertical-align: bottom;
             display: inline-block;
-            color: #333;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s ease;
-            &:hover{
-                color: #000;
-                border-bottom-color: #000;
-            }
+            @include linkable;
         }
     }
 }
@@ -175,6 +178,13 @@ h3{
 .centered{
     text-align: center;
 }
+.button{
+    background-color: #fff;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    line-height: 1.8em;
+}
 
 
 
@@ -193,12 +203,13 @@ $haze_input_padding: 5px;
     background-color: transparent;
     margin: $haze_padding auto;
     width: $haze_width + (2*$haze_padding) + (2*$haze_margin);
+    color: #555;
     .cloud{
         background-color: $haze_color;
         margin: $haze_margin;
         padding: ($haze_padding/1.5) $haze_padding;
         width: $haze_width;
-        font-size: 1em;
+        font-size: 0.95em;
         line-height: 1.5em;
         
         .pronounce{
@@ -218,8 +229,8 @@ $haze_input_padding: 5px;
             border: none;
             margin: $haze_input_padding 0px;
             padding: $haze_input_padding;
-            font-size: 16px;
-            line-height: 20px;
+            font-size: 1em;
+            line-height: 1.5em;
             font-family: EB Garamond, serif;
             color: #777;
             &:focus{
@@ -241,15 +252,17 @@ $haze_input_padding: 5px;
             overflow-x: hidden;
         }
         .button{
-            background-color: #fff;
             float: right;
             margin: $haze_input_padding 0px;
             padding: $haze_input_padding/2 $haze_input_padding;
-            cursor: pointer;
         }
         .contactSection{
             width: ($haze_width - $ditch_width) / 2;
             float: left;
+            a{
+                @include linkable;
+                padding-bottom: 2px; //needed because of bug in chrome
+            }
         }
     }
     .logical{
