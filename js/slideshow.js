@@ -41,17 +41,18 @@ Slideshow.prototype = {
 		} else {
 			this.currentLocation = 0;
 		}
-		this.container.animate({
-			"left": -this.images[this.currentLocation].div.position().left
-		}, 500);
+		this.goto(this.images[this.currentLocation]);
 	},
 	retreat: function(){
 		if( this.currentLocation > 0 ){
 			this.currentLocation--;
-			this.container.animate({
-				"left": -this.images[this.currentLocation].div.position().left
-			}, 500);
+			this.goto(this.images[this.currentLocation]);
 		}
+	},
+	goto: function(image){
+		this.container.animate({
+			"left": -image.div.position().left
+		}, 500);
 	}
 };
 
