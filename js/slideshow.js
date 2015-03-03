@@ -9,11 +9,9 @@ var Slideshow = function(outfits, container){
 		//$("<img/>",{"src": outfits[i].large}).appendTo(div);
 		
 		// ribbons
-		$("<div/>",{
-			"class": 'ribbon top',
-			'text': outfits[i].top
-		}).appendTo(div);
-		$("<div/>",{"class": 'ribbon bottom', 'text': outfits[i].bottom}).appendTo(container);
+		var ribbons = $("<div/>",{"class":"ribbons"}).appendTo(container);
+		$("<div/>",{"class": 'ribbon top','text': outfits[i].top}).appendTo(ribbons);
+		$("<div/>",{"class": 'ribbon bottom', 'text': outfits[i].bottom}).appendTo(ribbons);
 		
 		this.images.push({
 			src: outfits[i],

@@ -93,25 +93,37 @@ html, body{
             padding: 0px 1px;
             min-height: 420px;
             overflow: hidden;
-            img{
-                height: 100%;
-                float: left;
-                clear: both;
+            &:hover + .ribbons{
+                opacity: 1;
             }
         }
-        .ribbon{
-            position: absolute;
-            right: 1px;
-            background-color: rgba(42,42,42,0.5);
-            color: white;
-            padding: 7px;
-            &.top{
-                top: 80px;
+        .ribbons{
+            transition: all 0.3s ease;
+            opacity: 0;
+            float: left;
+            width: 0px;
+            height: 0px;
+            position: relative;
+            cursor: pointer;
+            &:hover{
+                opacity: 1;
             }
-            &.bottom{
-                top: 120px;
+            .ribbon{
+                position: absolute;
+                right: 1px;
+                background-color: rgba(42,42,42,0.5);
+                color: white;
+                padding: 4px 7px;
+                white-space: nowrap;
+                &.top{
+                    top: 80px;
+                }
+                &.bottom{
+                    top: 120px;
+                }
             }
         }
+        
     }
     &.fadeshow{
         .slide{
