@@ -4,10 +4,11 @@ $link_font_size: 12px;
 $link_padding: 36px;
 
 
-body{
+html, body{
     margin:0;
     padding:0;
     overflow-x: hidden;
+    height: 100%;
 }
 
 #header{
@@ -24,7 +25,7 @@ body{
         background-repeat: no-repeat;
         height: $logo_height;
         width: 240px;
-        margin-top: $heading_height - $logo_height;
+        margin-top: $heading_height - $logo_height - 3px;
         margin-left: 24px;
     }
     .links{
@@ -82,11 +83,7 @@ body{
 
 #show{
     .slide{
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: top center;
         height: 100%;
-        min-height: 420px;
     }
     
     &.slideshow{
@@ -94,10 +91,33 @@ body{
         .slide{
             float: left;
             padding: 0px 1px;
+            min-height: 420px;
+            overflow: hidden;
+            img{
+                height: 100%;
+                float: left;
+                clear: both;
+            }
+        }
+        .ribbon{
+            position: absolute;
+            right: 1px;
+            background-color: rgba(42,42,42,0.5);
+            color: white;
+            padding: 7px;
+            &.top{
+                top: 80px;
+            }
+            &.bottom{
+                top: 120px;
+            }
         }
     }
     &.fadeshow{
         .slide{
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top center;
             position: absolute;
             top: 0;
             left: 0;

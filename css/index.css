@@ -1,10 +1,11 @@
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\000037}}
-body {
+html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  height: 100%; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000314}}
 #header {
   position: absolute;
   top: 0;
@@ -12,20 +13,20 @@ body {
   right: 0;
   height: 46px;
   font-family: 'Crimson Text', serif; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000322}}
   #header .logo {
     float: left;
     background-image: url("../icons/logo.svg");
     background-repeat: no-repeat;
     height: 30px;
     width: 240px;
-    margin-top: 16px;
+    margin-top: 13px;
     margin-left: 24px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000331}}
   #header .links {
     height: 100%;
     float: right; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000334}}
     #header .links .link {
       margin-right: 36px;
       margin-top: 34px;
@@ -40,28 +41,28 @@ body {
       text-decoration: none;
       border-bottom: 1px solid transparent;
       transition: all 0.3s ease; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000348}}
       #header .links .link:hover {
         color: #000;
         border-bottom-color: #000; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000355}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000356}}
 #footer {
   position: fixed;
   right: 12px;
   bottom: 12px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000360}}
   #footer a {
     cursor: pointer;
     margin-left: 24px;
     color: #333;
     text-decoration: none;
     transition: all 0.3s ease; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000366}}
     #footer a:hover {
       color: #000; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000372}}
 .content {
   position: absolute;
   left: 0;
@@ -73,22 +74,41 @@ body {
   overflow-x: hidden;
   font-family: 'EB Garamond', serif; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000384}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000385}}
 #show .slide {
+  height: 100%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000389}}
+#show.slideshow {
+  padding: 2px 1px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000391}}
+  #show.slideshow .slide {
+    float: left;
+    padding: 0px 1px;
+    min-height: 420px;
+    overflow: hidden; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000396}}
+    #show.slideshow .slide img {
+      height: 100%;
+      float: left;
+      clear: both; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003102}}
+  #show.slideshow .ribbon {
+    position: absolute;
+    right: 1px;
+    background-color: rgba(42, 42, 42, 0.5);
+    color: white;
+    padding: 7px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003108}}
+    #show.slideshow .ribbon.top {
+      top: 80px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003111}}
+    #show.slideshow .ribbon.bottom {
+      top: 120px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003117}}
+#show.fadeshow .slide {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
-  height: 100%;
-  min-height: 420px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000392}}
-#show.slideshow {
-  padding: 2px 1px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\0000394}}
-  #show.slideshow .slide {
-    float: left;
-    padding: 0px 1px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003100}}
-#show.fadeshow .slide {
   position: absolute;
   top: 0;
   left: 0;
@@ -97,17 +117,17 @@ body {
   padding: 0; }
 
 /*   content of page   */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003115}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003135}}
 .backdrop {
   background-position: top center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003117}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003137}}
   .backdrop.about {
     background-image: url("../images/about-bg.jpg"); }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003120}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003140}}
   .backdrop.contact {
     background-image: url("../images/contact-bg.jpg"); }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003125}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003145}}
 h2 {
   font-size: 1.4em;
   font-weight: bold;
@@ -116,29 +136,29 @@ h2 {
   margin-right: 0.3em;
   display: inline; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003133}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003153}}
 h3 {
   font-size: 0.8em;
   font-weight: normal;
   text-transform: capitalize;
   margin: 0.2em 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003139}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003159}}
 .clearfix {
   display: block;
   clear: both; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003143}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003163}}
 .centered {
   text-align: center; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003159}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003179}}
 .haze {
   border: 5px solid rgba(255, 255, 255, 0.5);
   background-color: transparent;
   margin: 48px auto;
   width: 386px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003164}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003184}}
   .haze .cloud {
     background-color: rgba(255, 255, 255, 0.5);
     margin: 5px;
@@ -146,18 +166,18 @@ h3 {
     width: 280px;
     font-size: 1em;
     line-height: 1.5em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003172}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003192}}
     .haze .cloud .pronounce {
       margin-right: 0.2em;
       font-style: italic; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003176}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003196}}
     .haze .cloud p {
       margin-top: 1.2em;
       margin-bottom: 1.2em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003181}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003201}}
   .haze .form {
     overflow: hidden; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003183}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003203}}
     .haze .form input, .haze .form textarea {
       float: left;
       background-color: rgba(255, 255, 255, 0.5);
@@ -168,35 +188,35 @@ h3 {
       line-height: 20px;
       font-family: EB Garamond, serif;
       color: #777; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003193}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003213}}
       .haze .form input:focus, .haze .form textarea:focus {
         background-color: rgba(255, 255, 255, 0.7);
         color: #000; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003198}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003218}}
     .haze .form input {
       width: 125px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003201}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003221}}
     .haze .form .ditch {
       float: left;
       width: 10px;
       height: 1px;
       display: inline-block; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003207}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003227}}
     .haze .form textarea {
       width: 270px;
       overflow-x: hidden; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003211}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003231}}
     .haze .form .button {
       background-color: #fff;
       float: right;
       margin: 5px 0px;
       padding: 2.5px 5px;
       cursor: pointer; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003218}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003238}}
     .haze .form .contactSection {
       width: 135px;
       float: left; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003223}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003243}}
   .haze .logical {
     margin: 10px 0px;
     font-size: 14px;

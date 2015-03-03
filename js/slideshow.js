@@ -1,15 +1,22 @@
-var Slideshow = function(images, container){
+var Slideshow = function(outfits, container){
 	this.container = container;
-	this.container.css("width", (images.length * 100) + "%");
+	this.container.css("width", (outfits.length * 100) + "%");
 	
 	this.images = [];
-	for( var i in images ){
-		var div = $("<img/>",{
-			class: 'slide',
-			src: images[i].large
-		}).appendTo(container);
+	for( var i in outfits ){
+		//var div = $("<div/>",{"class": 'slide'}).appendTo(container);
+		var div = $("<img/>",{"class": 'slide',"src": outfits[i].large}).appendTo(container);
+		//$("<img/>",{"src": outfits[i].large}).appendTo(div);
+		
+		// ribbons
+		$("<div/>",{
+			"class": 'ribbon top',
+			'text': outfits[i].top
+		}).appendTo(div);
+		$("<div/>",{"class": 'ribbon bottom', 'text': outfits[i].bottom}).appendTo(container);
+		
 		this.images.push({
-			src: images[i],
+			src: outfits[i],
 			div: div
 		});
 	}
