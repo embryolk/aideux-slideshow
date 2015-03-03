@@ -42,15 +42,15 @@ Slideshow.prototype = {
 			this.currentLocation = 0;
 		}
 		this.container.animate({
-			"left": -(this.currentLocation*100)+"vw"
-		}, 300);
+			"left": -this.images[this.currentLocation].div.position().left
+		}, 500);
 	},
 	retreat: function(){
 		if( this.currentLocation > 0 ){
 			this.currentLocation--;
 			this.container.animate({
-				"left": -(this.currentLocation*100)+"vw"
-			}, 300);
+				"left": -this.images[this.currentLocation].div.position().left
+			}, 500);
 		}
 	}
 };
