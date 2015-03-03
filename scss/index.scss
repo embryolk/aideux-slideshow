@@ -82,17 +82,17 @@ body{
 
 #show{
     .slide{
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
         background-size: cover;
         background-repeat: no-repeat;
+        background-position: top center;
     }
     
     &.slideshow{
+        padding: 2px 1px;
         .slide{
             float: left;
+            height: 100%;
+            padding: 0px 1px;
         }
     }
     &.fadeshow{
@@ -100,6 +100,10 @@ body{
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
     }
 }
@@ -109,6 +113,7 @@ body{
 /*   content of page   */
 
 .backdrop{
+    background-position: top center;
     &.about{
         background-image: url('../images/about-bg.jpg');
     }

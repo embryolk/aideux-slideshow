@@ -4,9 +4,9 @@ var Slideshow = function(images, container){
 	
 	this.images = [];
 	for( var i in images ){
-		var div = $("<div/>",{
+		var div = $("<img/>",{
 			class: 'slide',
-			style: 'background-image: url('+images[i]+');'
+			src: images[i].large
 		}).appendTo(container);
 		this.images.push({
 			src: images[i],

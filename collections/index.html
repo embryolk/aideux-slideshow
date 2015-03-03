@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>aideux | collections</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <link href="../bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!--<link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>-->
+        <link href='http://fonts.googleapis.com/css?family=Crimson+Text:600italic' rel='stylesheet' type='text/css'>
+        <link href="../css/index.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/header-footer.js"></script>
+        <script type="text/javascript" src="../js/slideshow.js"></script>
+
+    </head>
+    <body>
+        <div id="header"></div>
+
+        <div id="show" class="slideshow content"></div>
+        
+        <div id="footer"></div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var header = new Header($("#header"));
+                var footer = new Footer($("#footer"));
+
+                var slides = [
+                    { 
+                        large: "images/large/001.jpg", 
+                        small: "images/small/001.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/002.jpg", 
+                        small: "images/small/002.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/003.jpg", 
+                        small: "images/small/003.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/004.jpg", 
+                        small: "images/small/004.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/005.jpg", 
+                        small: "images/small/005.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/006.jpg", 
+                        small: "images/small/006.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/007.jpg", 
+                        small: "images/small/007.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/008.jpg", 
+                        small: "images/small/008.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/009.jpg", 
+                        small: "images/small/009.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/010.jpg", 
+                        small: "images/small/010.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/011.jpg", 
+                        small: "images/small/011.jpg",
+                        related: []
+                    },{ 
+                        large: "images/large/012.jpg", 
+                        small: "images/small/012.jpg",
+                        related: []
+                    }
+                ];
+                var slideshow = new Slideshow(slides, $("#show"));
+            });
+        </script>
+        
+    </body>
+</html>

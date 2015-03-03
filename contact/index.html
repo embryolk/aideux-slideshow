@@ -27,10 +27,10 @@ and open the template in the editor.
                 <div class='cloud forms'>
                     <h2 class='clearfix'>Contact Us</h2>
                     <div class='form'>
-                        <input type='text' name='name' default='Your Name' value='Your Name'></input>
+                        <input type='text' name='name' data-default='Your Name' value='Your Name'></input>
                         <div class='ditch'></div>
-                        <input type='email' name='email' default='Your@Email.com' value='Your@Email.com'></input>
-                        <textarea name='body' rows='5' default='How can we help you?'>How can we help you?</textarea>
+                        <input type='email' name='email' data-default='Your@Email.com' value='Your@Email.com'></input>
+                        <textarea name='body' rows='5' data-default='How can we help you?'>How can we help you?</textarea>
                         <div class='button'>SEND</div>
                     </div>
                     <div class='centered logical'>
@@ -62,14 +62,14 @@ and open the template in the editor.
                 $("input,textarea").
                         focus(function(ev){ 
                             var $this = $(this);
-                            if( $this.val() === $this.attr("default")){
+                            if( $this.val() === $this.attr("data-default")){
                                 $(this).val(""); 
                             }
                         }).
                         blur(function(ev){
                             var $this = $(this);
                             if( $this.val().trim().length === 0){
-                                $this.val($this.attr("default"));
+                                $this.val($this.attr("data-default"));
                             } 
                         });
             });

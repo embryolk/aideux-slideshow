@@ -1,6 +1,5 @@
 var Fadeshow = function(images, container){
 	this.container = container;
-	this.container.css("width", (images.length * 100) + "%");
 	
 	var opaque = '1';
 	this.images = [];
