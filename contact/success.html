@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>aideux | contact</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <link href="../bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!--<link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>-->
+        <link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Open+Sans' rel='stylesheet' type='text/css'>
+        <link href="../css/index.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/header-footer.js"></script>
+
+    </head>
+    <body>
+        <div id="header"></div>
+
+        <div class='backdrop content about'>
+            <div class='haze'>
+                <div class='cloud words'>
+                    <h2 class='clearfix'>Message Sent</h2>
+                    <p>
+                        Thank you for your message, we will respond to your  within 36 hours
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="footer"></div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var header = new Header($("#header"));
+                var footer = new Footer($("#footer"));
+            });
+        </script>
+        
+    </body>
+</html>

@@ -48,7 +48,7 @@ html, body{
         height: $logo_height;
         width: 240px;
         margin-top: $heading_height - $logo_height - 3px;
-        margin-left: 24px;
+        margin-left: 32px;
     }
     .links{
         height: 100%;
@@ -89,7 +89,7 @@ html, body{
     padding: 0;
     margin: 0;
     overflow-x: hidden;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Crimson Text', serif;
 }
 
 #show{
@@ -202,8 +202,9 @@ h2{
 h3{
     font-size: 0.8em;
     font-weight: normal;
+    line-height: 1.6em;
     text-transform: capitalize;
-    margin: 0.2em 0;
+    margin: 0;
 }
 .clearfix{
     display: block;
@@ -225,17 +226,18 @@ h3{
 
 $haze_color: rgba(255,255,255,0.5);
 $haze_focus_color: rgba(255,255,255,0.7);
-$haze_width: 360px;
 $haze_width: 280px;
 $haze_padding: 48px;
 $haze_margin: 5px;
 $ditch_width: 10px;
-$haze_input_padding: 5px;
+$haze_input_padding: 6px;
+$haze_form_margin: 8px;
+$haze_input_border: 1px;
 
 .haze{
-    border: 5px solid $haze_color;
+    border: 4px solid $haze_color;
     background-color: transparent;
-    margin: $haze_padding auto;
+    margin: 2*$haze_padding auto;
     width: $haze_width + (2*$haze_padding) + (2*$haze_margin);
     color: #555;
     .cloud{
@@ -243,7 +245,7 @@ $haze_input_padding: 5px;
         margin: $haze_margin;
         padding: ($haze_padding/1.5) $haze_padding;
         width: $haze_width;
-        font-size: 0.95em;
+        font-size: 0.92em;
         line-height: 1.5em;
         
         .pronounce{
@@ -257,23 +259,27 @@ $haze_input_padding: 5px;
     }
     .form{
         overflow: hidden;
+        margin: $haze_form_margin;
         input, textarea{
             float: left;
             background-color: $haze_color;
-            border: none;
+            border: $haze_input_border solid transparent;
             margin: $haze_input_padding 0px;
-            padding: $haze_input_padding;
-            font-size: 1em;
-            line-height: 1.5em;
-            font-family: EB Garamond, serif;
+            padding: $haze_input_padding - 2 $haze_input_padding;
+            font-size: 0.92em;
+            font-style: italic;
+            line-height: 1.4em;
+            font-family: 'Crimson Text', serif;
             color: #777;
             &:focus{
                 background-color: $haze_focus_color;
                 color: #000;
+                outline: none;
+                border-color: #777;
             }
         }
         input{
-            width: ($haze_width/2) - ($ditch_width/2) - ($haze_input_padding*2);
+            width: ($haze_width/2) - ($haze_form_margin) - ($ditch_width/2) - ($haze_input_padding*2) - ($haze_input_border*2);
         }
         .ditch{
             float: left;
@@ -282,16 +288,16 @@ $haze_input_padding: 5px;
             display: inline-block;
         }
         textarea{
-            width: $haze_width - ($haze_input_padding*2);
+            width: $haze_width - ($haze_form_margin*2) - ($haze_input_padding*2) - ($haze_input_border*2);
             overflow-x: hidden;
         }
         .button{
             float: right;
             margin: $haze_input_padding 0px;
-            padding: $haze_input_padding/2 $haze_input_padding;
+            padding: $haze_input_padding $haze_input_padding*2;
         }
         .contactSection{
-            width: ($haze_width - $ditch_width) / 2;
+            width: ($haze_width - ($haze_form_margin*2) - $ditch_width) / 2;
             float: left;
             a{
                 @include linkable;
@@ -300,9 +306,10 @@ $haze_input_padding: 5px;
         }
     }
     .logical{
-        margin: 10px 0px;
+        margin: 4px 0px 8px;
         font-size: 14px;
         font-style: italic;
+        display: none; // Trying out removing
     }
 }
 
