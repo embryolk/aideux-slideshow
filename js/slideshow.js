@@ -26,7 +26,7 @@ var Slideshow = function(outfits, container){
 	}
 	
 	this.currentLocation = 0;
-	$(window).load(function(ev){
+	$(container).load(function(ev){
 		self.constrainLeft();
 	});
 	

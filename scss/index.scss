@@ -186,6 +186,9 @@ html, body{
     &.contact{
         background-image: url('../images/contact-bg.jpg');
     }
+    &.ordering{
+        background-image: url('../images/ordering-bg.jpg');
+    }
 }
 
 h2{
@@ -300,5 +303,17 @@ $haze_input_padding: 5px;
         margin: 10px 0px;
         font-size: 14px;
         font-style: italic;
+    }
+}
+
+.article{
+    width: 720px;
+    margin: 64px auto;
+    h2{
+        margin: 2em 0 1em;
+        display: block;
+    }
+    p{
+        margin: 1em;
     }
 }
