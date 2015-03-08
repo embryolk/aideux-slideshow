@@ -121,7 +121,8 @@ html, body{
             .ribbon{
                 cursor: pointer;
                 position: absolute;
-                right: -12px;
+                width: 60px;
+                left: -64px;
                 background-color: white;
                 color: #555;
                 padding: 7px;
@@ -132,7 +133,7 @@ html, body{
                     border-top: 1px solid #555;
                     padding: 5px;
                     text-align: center;
-                    font-size: 0.9em;
+                    font-size: 0.80em;
                     word-spacing: 80px;
                     &.type{
                         text-transform: uppercase;
