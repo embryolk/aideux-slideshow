@@ -13,12 +13,16 @@ var Slideshow = function(outfits, container){
 		var ornaments = $("<div/>",{"class":"ornaments"}).appendTo(container);
 		$("<a/>",{"class": 'fa fa-facebook','href': outfits[i].top}).appendTo(ornaments);
 		$("<a/>",{"class": 'fa fa-pinterest-p', 'href': outfits[i].bottom}).appendTo(ornaments);
-		var ribbonTop = $("<div/>",{"class": 'ribbon top'}).appendTo(ornaments);
-		$("<div/>",{class:"phrase type",text:"The Top"}).appendTo(ribbonTop);
-		$("<div/>",{class:"phrase title",text:outfits[i].top}).appendTo(ribbonTop);
-		var ribbonBottom = $("<div/>",{"class": 'ribbon bottom'}).appendTo(ornaments);
-		$("<div/>",{class:"phrase type",text:"The Bottom"}).appendTo(ribbonBottom);
-		$("<div/>",{class:"phrase title",text:outfits[i].bottom}).appendTo(ribbonBottom);
+		if( outfits[i].top ){
+			var ribbonTop = $("<div/>",{"class": 'ribbon top'}).appendTo(ornaments);
+			$("<div/>",{class:"phrase type",text:"The Top"}).appendTo(ribbonTop);
+			$("<div/>",{class:"phrase title",text:outfits[i].top}).appendTo(ribbonTop);
+		}
+		if( outfits[i].bottom ){
+			var ribbonBottom = $("<div/>",{"class": 'ribbon bottom'}).appendTo(ornaments);
+			$("<div/>",{class:"phrase type",text:"The Bottom"}).appendTo(ribbonBottom);
+			$("<div/>",{class:"phrase title",text:outfits[i].bottom}).appendTo(ribbonBottom);
+		}
 		
 		this.images.push({ src: outfits[i], div: div });
 		
@@ -75,8 +79,10 @@ Slideshow.prototype = {
 	},
 	goto: function(location){
 		this.currentLocation = location;
+		var leftiness = this.leftiness(location);
+		leftiness = Math.min(leftiness,0);
 		this.container.animate({
-			"left": this.leftiness(location)
+			"left": leftiness
 		}, 500);
 	},
 	center: function(location){
