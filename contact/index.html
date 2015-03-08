@@ -18,6 +18,7 @@ and open the template in the editor.
 
         <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="../js/header-footer.js"></script>
+        <script type="text/javascript" src="../js/contact.js"></script>
 
     </head>
     <body>
@@ -27,13 +28,13 @@ and open the template in the editor.
             <div class='haze'>
                 <div class='cloud forms'>
                     <h2 class='clearfix'>Contact Us</h2>
-                    <div class='form'>
-                        <input type='text' name='name' data-default='Your Name' value='Your Name'></input>
+                    <form id='contact_form' class='form'>
+                        <input type='text' name='name' id='name' data-default='Your Name' value='Your Name'></input>
                         <div class='ditch'></div>
-                        <input type='email' name='email' data-default='Your@Email.com' value='Your@Email.com'></input>
-                        <textarea name='body' rows='5' data-default='How can we help you?'>How can we help you?</textarea>
-                        <div class='button'>SEND</div>
-                    </div>
+                        <input type='email' name='email' id='email' data-default='Your@Email.com' value='Your@Email.com'></input>
+                        <textarea name='message' id='message' rows='5' data-default='How can we help you?'>How can we help you?</textarea>
+                        <div name='submit' id='submit' class='button'>SEND</div>
+                    </form>
                     <div class='centered logical'>
                         -OR-
                     </div>
@@ -60,19 +61,7 @@ and open the template in the editor.
                 var header = new Header($("#header"));
                 var footer = new Footer($("#footer"));
                 
-                $("input,textarea").
-                        focus(function(ev){ 
-                            var $this = $(this);
-                            if( $this.val() === $this.attr("data-default")){
-                                $(this).val(""); 
-                            }
-                        }).
-                        blur(function(ev){
-                            var $this = $(this);
-                            if( $this.val().trim().length === 0){
-                                $this.val($this.attr("data-default"));
-                            } 
-                        });
+                var contacter = new Contact($("#contact_form"));
             });
         </script>
         
