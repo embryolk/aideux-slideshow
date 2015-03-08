@@ -25,6 +25,8 @@ var Contact = function(form){
 			} else {
 				throw "Please Supply a "+fieldName;
 			}
+		} else if( fieldName === 'email' && (fieldValue.indexOf('@') === -1 || fieldValue.indexOf('.') === -1) ) {
+			throw "Please Supply a valid email address";
 		} else {
 			return fieldValue;
 		}
