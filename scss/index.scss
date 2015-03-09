@@ -340,7 +340,6 @@ $haze_input_border: 1px;
 @media only screen 
 and (max-width : 400px) {
     #header{
-        position: fixed;
         .navButton{
             display: block;
             float: right;
@@ -357,7 +356,6 @@ and (max-width : 400px) {
             float: none;
             height: auto;
             z-index: 2;
-            transition: all 0.3s ease;
             &.responsive-show{
                 display: block;
             }
