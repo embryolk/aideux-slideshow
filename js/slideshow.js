@@ -34,7 +34,7 @@ var Slideshow = function(outfits, container){
 		self.constrainLeft();
 	});
 	
-	$(container).keydown(function(ev){
+	$(document).keydown(function(ev){
 		if( ev.which === 37 ) { // left
 			self.retreat();
 		} else if (ev.which === 39) { // right

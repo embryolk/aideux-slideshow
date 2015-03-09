@@ -15,8 +15,14 @@ var Header = function(container){
 			"href": linkObj.url 
 		}).appendTo(links);
 	}
-	
 	links.appendTo(this.$container);
+	
+	// responsive
+	$("<div/>",{ "class": "navButton fa fa-bars fa-2x" }).
+			appendTo(this.$container).
+			click(function(ev){
+				links.toggleClass("responsive-show");
+			});
 };
 
 Header.LINKS = [

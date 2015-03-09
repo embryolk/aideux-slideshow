@@ -1,5 +1,7 @@
 $heading_height: 46px;
-$logo_height: $heading_height - 16px;
+$logo_margin: 16px;
+$logo_height: $heading_height - $logo_margin;
+$content_top: $heading_height + 14px;
 $link_font_size: 12px;
 $link_padding: 36px;
 
@@ -65,6 +67,9 @@ html, body{
             @include linkable;
         }
     }
+    .navButton{
+        display: none;
+    }
 }
 
 
@@ -83,7 +88,7 @@ html, body{
 .content{
     position: absolute;
     left: 0;
-    top: $heading_height+14px;
+    top: $content_top;
     bottom: 0;
     right: 0;
     padding: 0;
@@ -331,3 +336,62 @@ $haze_input_border: 1px;
 
 
 // Responsive
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 400px) {
+    #header{
+        position: fixed;
+        .navButton{
+            display: block;
+            float: right;
+            margin-top: $logo_margin;
+            margin-right: $logo_margin;
+            height: $logo_height;
+        }
+        .links{
+            display: none;
+            position: absolute;
+            right: 0px;
+            top: $content_top;
+            background-color: white;
+            float: none;
+            height: auto;
+            z-index: 2;
+            transition: all 0.3s ease;
+            &.responsive-show{
+                display: block;
+            }
+            .link{
+                display: inline-block;
+                clear: both;
+                float: left;
+                margin: 0px;
+                padding: 16px;
+            }
+        }
+    }
+    .content{
+        .haze{
+            width: auto;
+            margin: $logo_margin * 2;
+            .cloud{
+                width: auto;
+            }
+            .form{
+                input, textarea{
+                    width: 100%;
+                }
+                h3{
+                    line-height: 1em;
+                }
+                .contactSection{
+                    margin-bottom: 0.5em;
+                }
+            }
+        }
+        .article{
+            margin: $logo_margin * 2;
+            width: auto;
+        }
+    }
+}
