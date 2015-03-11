@@ -1,16 +1,19 @@
 var Slideshow = function(outfits, container){
 	this.container = container;
-	this.container.css("width", (outfits.length * 100) + "%");
+	
+	var slideshowBox = $("<div/>",{"class":"slideshowBox"}).
+			appendTo(container).
+			css("width", (outfits.length * 100) + "%");
 	
 	this.images = [];
 	var self = this;
 	for( var i in outfits ){
 		//var div = $("<div/>",{"class": 'slide'}).appendTo(container);
-		var div = $("<img/>",{"class": 'slide',"src": outfits[i].large}).appendTo(container);
+		var div = $("<img/>",{"class": 'slide',"src": outfits[i].large}).appendTo(slideshowBox);
 		//$("<img/>",{"src": outfits[i].large}).appendTo(div);
 				
 		//ornaments
-		var ornaments = $("<div/>",{"class":"ornaments"}).appendTo(container);
+		var ornaments = $("<div/>",{"class":"ornaments"}).appendTo(slideshowBox);
 		$("<a/>",{"class": 'fa fa-facebook','href': outfits[i].top}).appendTo(ornaments);
 		$("<a/>",{"class": 'fa fa-pinterest-p', 'href': outfits[i].bottom}).appendTo(ornaments);
 		if( outfits[i].top ){

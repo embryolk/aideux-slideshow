@@ -8,6 +8,9 @@ $link_padding: 36px;
 $link_color: #333;
 $link_hover: #000;
 
+$ribbon_width: 60px;
+$ribbon_padding: 8px;
+
 @mixin linkable{
     @include social;
     border-bottom: 1px solid transparent;
@@ -36,12 +39,13 @@ html, body{
 }
 
 #header{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: $heading_height;
     font-family: 'Crimson Text', serif;
+    z-index: 2;
     
     .logo{
         float: left;
@@ -77,8 +81,9 @@ html, body{
 
 #footer{
     position: fixed;
-    right: 12px;
-    bottom: 12px;
+    right: 24px;
+    bottom: 24px;
+    z-index: 3;
     a{
         @include social;
         margin-left: 24px;
@@ -86,7 +91,7 @@ html, body{
 }
 
 .content{
-    position: absolute;
+    position: fixed;
     left: 0;
     top: $content_top;
     bottom: 0;
@@ -95,6 +100,7 @@ html, body{
     margin: 0;
     overflow-x: hidden;
     font-family: 'Crimson Text', serif;
+    z-index: 1;
 }
 
 #show{
@@ -104,6 +110,9 @@ html, body{
     
     &.slideshow{
         padding: 2px 1px;
+        .slideshowBox{
+            height:100%;
+        }
         .slide{
             float: left;
             padding: 0px 1px;
@@ -127,12 +136,11 @@ html, body{
                 cursor: pointer;
                 position: absolute;
                 width: 60px;
-                left: -64px;
+                left: -($ribbon_width + (1 * $ribbon_padding));
                 background-color: white;
                 color: #555;
-                padding: 7px;
+                padding: $ribbon_padding;
                 text-align: center;
-                min-width: 70px;
                 .phrase{
                     display: inline-block;
                     border-top: 1px solid #555;
@@ -355,7 +363,7 @@ and (max-width : 400px) {
             background-color: white;
             float: none;
             height: auto;
-            z-index: 2;
+            z-index: 999;
             &.responsive-show{
                 display: block;
             }
@@ -390,6 +398,15 @@ and (max-width : 400px) {
         .article{
             margin: $logo_margin * 2;
             width: auto;
+        }
+    }
+    #show{
+        &.slideshow{
+            .ornaments{
+                .ribbon{
+                    left: -($ribbon_width + (2 * $ribbon_padding));
+                }
+            }
         }
     }
 }
