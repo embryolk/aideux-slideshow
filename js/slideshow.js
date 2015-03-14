@@ -1,4 +1,5 @@
 var Slideshow = function(outfits, container){
+	this.outfits = outfits;
 	this.container = container;
 	
 	var slideshowBox = $("<div/>",{"class":"slideshowBox"}).
@@ -7,34 +8,58 @@ var Slideshow = function(outfits, container){
 	
 	this.images = [];
 	var self = this;
-	for( var i in outfits ){
+	$.each(outfits, function(i, outfit){
 		//var div = $("<div/>",{"class": 'slide'}).appendTo(container);
-		var div = $("<img/>",{"class": 'slide',"src": outfits[i].large}).appendTo(slideshowBox);
+		var div = $("<img/>",{"class": 'slide',"src": outfit.large}).appendTo(slideshowBox);
 		//$("<img/>",{"src": outfits[i].large}).appendTo(div);
 				
 		//ornaments
 		var ornaments = $("<div/>",{"class":"ornaments"}).appendTo(slideshowBox);
-		$("<a/>",{"class": 'fa fa-facebook','href': outfits[i].top}).appendTo(ornaments);
-		$("<a/>",{"class": 'fa fa-pinterest-p', 'href': outfits[i].bottom}).appendTo(ornaments);
+		
+		/*
+		$("<a/>",{"class": 'fa fa-facebook'}).
+				click(function(){ self.facebook(outfit); }).
+				appendTo(ornaments);
+		*/
+		$("<a/>",{"class": 'fa fa-pinterest-p'}).
+				click(function(){ self.pinterest(i); }).
+				appendTo(ornaments);
+				
 		if( outfits[i].top ){
 			var ribbonTop = $("<div/>",{"class": 'ribbon top'}).appendTo(ornaments);
 			$("<div/>",{class:"phrase type",text:"The Top"}).appendTo(ribbonTop);
-			$("<div/>",{class:"phrase title",text:outfits[i].top}).appendTo(ribbonTop);
+			$("<div/>",{class:"phrase title",text:outfit.top}).appendTo(ribbonTop);
 		}
 		if( outfits[i].bottom ){
 			var ribbonBottom = $("<div/>",{"class": 'ribbon bottom'}).appendTo(ornaments);
 			$("<div/>",{class:"phrase type",text:"The Bottom"}).appendTo(ribbonBottom);
-			$("<div/>",{class:"phrase title",text:outfits[i].bottom}).appendTo(ribbonBottom);
+			$("<div/>",{class:"phrase title",text:outfit.bottom}).appendTo(ribbonBottom);
 		}
 		
-		this.images.push({ src: outfits[i], div: div });
+		self.images.push({ src: outfit, div: div });
 		
 		div.click(function(idx){ return function(ev){ self.goto(idx); }; }(i) );
+	});
+	
+	
+	var imgIdx = Slideshow.getQueryVariable("image");
+	if( imgIdx ){
+		var imgIdxInt = parseInt(imgIdx);
+		if( imgIdxInt < this.images.length && imgIdxInt > -1 ){
+			this.currentLocation = imgIdxInt;
+		} else {
+			this.currentLocation = 0;
+		}
+	} else {
+		this.currentLocation = 0;
 	}
 	
-	this.currentLocation = 0;
 	$(container).load(function(ev){
-		self.constrainLeft();
+		if( self.currentLocation === 0 ){
+			self.constrainLeft();
+		} else {
+			self.goto(self.currentLocation);
+		}
 	});
 	
 	$(document).keydown(function(ev){
@@ -98,6 +123,89 @@ Slideshow.prototype = {
 		this.container.css({
 			"left": 0
 		});
+	},
+	facebook: function(idx){
+		var outfit = this.outfits[idx];
+		FB.ui({
+			method: 'share_open_graph',
+			action_type: 'og.likes',
+			action_properties: JSON.stringify({
+				object: "http://www.aideux.com/collections/" + "?image="+idx,
+				image: "http://www.aideux.com/collections/" + outfit.medium
+			})
+		  }, function(response){});
+	},
+	pinterest: function(idx){
+		var outfit = this.outfits[idx];
+		
+		var pinterestUrl = 'http://www.pinterest.com/pin/create/button/'+
+				'?url='+encodeURI("http://www.aideux.com/collections/"+"?image="+idx)+
+				'&media='+encodeURI("http://www.aideux.com/collections/" + outfit.medium)+
+				'&description='+encodeURI(Slideshow.describeOutfit(outfit) + " from @Aideux");
+		window.open(pinterestUrl, 'Aideux | Pin It', 'resizable,scrollbars,status');
 	}
 };
 
+Slideshow.getQueryVariable = function(variable){
+	var query = window.location.search.substring(1);
+	var vars = query.split("&");
+	for (var i=0;i<vars.length;i++) {
+			var pair = vars[i].split("=");
+			if(pair[0] === variable){
+				return pair[1];
+			}
+	}
+	return(false);
+};
+Slideshow.describeOutfit = function(outfit){
+	var ret = '';
+	if( outfit.cape ){
+		ret = outfit.cape;
+	}
+	if( outfit.top ){
+		if( outfit.cape ){
+			if( outfit.bottom ){
+				ret += ", ";
+			} else {
+				ret += " and ";
+			}
+		}
+		ret += outfit.top;
+	}
+	if( outfit.bottom ){
+		if( outfit.cape && outfit.top ){
+			ret += ', and ';
+		} else if( outfit.cape || outfit.top ){
+			ret += ' and ';
+		}
+		ret += outfit.bottom;
+	}
+	return ret;
+};
+
+
+// Facebook
+  window.fbAsyncInit = function() {
+	FB.init({
+	  appId      : '1024906594204931',
+	  xfbml      : true,
+	  version    : 'v2.1'
+	});
+  };
+
+  (function(d, s, id){
+	 var js, fjs = d.getElementsByTagName(s)[0];
+	 if (d.getElementById(id)) {return;}
+	 js = d.createElement(s); js.id = id;
+	 js.src = "//connect.facebook.net/en_US/sdk.js";
+	 fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+// Pinterest
+   (function(d){
+    var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+    p.type = 'text/javascript';
+    p.async = true;
+    p.src = '//assets.pinterest.com/js/pinit.js';
+    f.parentNode.insertBefore(p, f);
+}(document));

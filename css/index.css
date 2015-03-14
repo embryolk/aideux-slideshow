@@ -152,10 +152,10 @@ html, body {
         color: black; }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003167}}
       #show.slideshow .ornaments .fa.fa-facebook {
-        right: 10px; }
+        right: 35px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003170}}
       #show.slideshow .ornaments .fa.fa-pinterest-p {
-        right: 30px; }
+        right: 15px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003177}}
 #show.fadeshow .slide {
   background-size: cover;
