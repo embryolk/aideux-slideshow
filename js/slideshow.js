@@ -2,19 +2,27 @@ var Slideshow = function(outfits, container){
 	this.outfits = outfits;
 	this.container = container;
 	
-	var slideshowBox = $("<div/>",{"class":"slideshowBox"}).
-			appendTo(container).
+	this.minLeft = 0;
+	this.canCreep = 0;
+	
+	this.slideshowBox = $("<div/>",{"class":"slideshowBox"}).
 			css("width", (outfits.length * 100) + "%");
 	
 	this.images = [];
 	var self = this;
 	$.each(outfits, function(i, outfit){
 		//var div = $("<div/>",{"class": 'slide'}).appendTo(container);
-		var div = $("<img/>",{"class": 'slide',"src": outfit.large}).appendTo(slideshowBox);
+		var div = $("<img/>",{
+			"class": 'slide',
+			"src": outfit.large
+		}).appendTo(self.slideshowBox).
+		on("load", function(ev){
+			self.refreshMinLeft();
+		});
 		//$("<img/>",{"src": outfits[i].large}).appendTo(div);
 				
 		//ornaments
-		var ornaments = $("<div/>",{"class":"ornaments"}).appendTo(slideshowBox);
+		var ornaments = $("<div/>",{"class":"ornaments"}).appendTo(self.slideshowBox);
 		
 		/*
 		$("<a/>",{"class": 'fa fa-facebook'}).
@@ -38,7 +46,7 @@ var Slideshow = function(outfits, container){
 		
 		self.images.push({ src: outfit, div: div });
 		
-		div.click(function(idx){ return function(ev){ self.goto(idx); }; }(i) );
+		//div.click(function(idx){ return function(ev){ self.goto(idx); }; }(i) );
 	});
 	
 	
@@ -54,36 +62,70 @@ var Slideshow = function(outfits, container){
 		this.currentLocation = 0;
 	}
 	
-	$(container).load(function(ev){
+	$(container).mousemove(function(ev){
+		if( self.canCreep ){
+			var creepThreshLeft = document.documentElement.clientWidth * 0.2;
+			var creepThreshRight = document.documentElement.clientWidth * 0.8;
+
+			if( ev.pageX < creepThreshLeft ){
+				self.creepStep = (ev.pageX - creepThreshLeft) / 20;
+			} else if( ev.pageX > creepThreshRight ){
+				self.creepStep = (ev.pageX - creepThreshRight) / 20;
+			} else {
+				self.stopCreeping();
+			}
+			
+			if( self.creepStep !== 0 && !self.creepInterval ){
+				self.creepInterval = setInterval( function(){ 
+					self.creep(); 
+				}, 20 );
+			}
+		}
+	}).mouseover(function(ev){
+		self.canCreep = true;
+	}).mouseout(function(ev){
+		self.stopCreeping();
+		self.canCreep = false;
+	});
+	
+	$(document).mouseleave(function(ev){
+		self.stopCreeping();
+		self.canCreep = false;
+	});
+		
+	this.slideshowBox.load(function(ev){
 		if( self.currentLocation === 0 ){
 			self.constrainLeft();
 		} else {
 			self.goto(self.currentLocation);
 		}
-	});
-	
-	$(document).keydown(function(ev){
-		if( ev.which === 37 ) { // left
-			self.retreat();
-		} else if (ev.which === 39) { // right
-			self.advance();
-		}
-	}).click(function(ev){
-		/*
-		if( ev.pageX < ($(window).width()/2) ){
-			self.retreat();
-		} else {
-			self.advance();
-		}
-		*/
-	});
-	
+	}); // isn't working really well
 	$( window ).resize(function() {
+		self.refreshMinLeft();
 		self.center(self.currentLocation);
 	});
+	
+	this.slideshowBox.appendTo(container);
 };
 
 Slideshow.prototype = {
+	creep: function(){
+		var newLeft = parseInt(this.container.css("left")) - this.creepStep;
+		if( newLeft > 0 ){
+			newLeft = 0;
+		} else if( newLeft < this.minLeft ) {
+			newLeft = this.minLeft;
+		}
+		console.log(newLeft);
+		this.container.css("left", newLeft );
+	},
+	stopCreeping: function(){
+		if( this.creepInterval ){
+			clearInterval(this.creepInterval);
+			this.creepInterval = null;
+		}
+		this.creepStep = 0;
+	},
 	advance: function(){
 		if( this.currentLocation < this.images.length-1 ){
 			this.currentLocation++;
@@ -123,6 +165,10 @@ Slideshow.prototype = {
 		this.container.css({
 			"left": 0
 		});
+	},
+	refreshMinLeft: function(){
+		var lastImage = this.images[this.images.length-1].div;
+		this.minLeft = -( lastImage.position().left + lastImage.width() ) + this.container.width();
 	},
 	facebook: function(idx){
 		var outfit = this.outfits[idx];
