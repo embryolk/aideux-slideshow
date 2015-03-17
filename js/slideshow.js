@@ -4,19 +4,21 @@ var Slideshow = function(outfits, container){
 	
 	this.minLeft = 0;
 	this.canCreep = 0;
+	this.atEnd = false;
 	
 	var self = this;
 	
 	this.slideshowBox = $("<div/>",{"class":"slideshowBox"}).
 			css("width", (outfits.length * 100) + "%");
 	
-	$("<div/>",{"class":"mover advance"}).
-			appendTo(container).
-			click(function(ev){ self.advance(); });
-	
-	$("<div/>",{"class":"mover retreat"}).
-			appendTo(container).
-			click(function(ev){ self.retreat(); });
+	this.movers = {
+		advance: $("<div/>",{"class":"mover advance"}).
+				appendTo(container).
+				click(function(ev){ self.advance(); }),
+		retreat: $("<div/>",{"class":"mover retreat"}).
+				appendTo(container).
+				click(function(ev){ self.retreat(); })
+	};
 	
 	this.images = [];
 	$.each(outfits, function(i, outfit){
@@ -112,6 +114,7 @@ var Slideshow = function(outfits, container){
 			self.goto(self.currentLocation);
 		}
 	}); // isn't working really well
+	
 	$( window ).resize(function() {
 		self.refreshMinLeft();
 		self.center(self.currentLocation);
@@ -140,19 +143,23 @@ Slideshow.prototype = {
 	},
 	advance: function(){
 		if( this.currentLocation < this.images.length-1 ){
-			this.currentLocation++;
+			this.goto(this.currentLocation+1);
 		} else {
-			this.currentLocation = 0;
+			this.goto(0);
 		}
-		this.goto(this.currentLocation);
 	},
 	retreat: function(){
 		if( this.currentLocation > 0 ){
-			this.currentLocation--;
-			this.goto(this.currentLocation);
+			this.goto(this.currentLocation-1);
 		}
 	},
 	leftiness: function(location){
+		var image = this.images[location];
+		var leftiness = -image.div.position().left;
+		leftiness += 3; // padding
+		return leftiness;
+	},
+	centeriness: function(location){
 		var image = this.images[location];
 		var leftiness = -image.div.position().left;
 		leftiness += $(window).width()/2;
@@ -160,12 +167,29 @@ Slideshow.prototype = {
 		return leftiness;
 	},
 	goto: function(location){
-		this.currentLocation = location;
 		var leftiness = this.leftiness(location);
-		leftiness = Math.min(leftiness,0);
-		this.slideshowBox.animate({
-			"left": leftiness
-		}, 500);
+		if( leftiness > 0 ){
+			leftiness = 0;
+			this.currentLocation = 0;
+			this.movers.retreat.css({"opacity": 0});
+			this.movers.advance.css({"opacity": 1});
+			this.atEnd = false;
+		} else if (leftiness < this.minLeft){
+			leftiness = this.minLeft;
+			if( !this.atEnd ){
+				this.currentLocation = location;
+			}
+			this.movers.advance.css({"opacity": 0});
+			this.movers.retreat.css({"opacity": 1});
+			this.atEnd = true;
+		} else {
+			this.currentLocation = location;
+			this.movers.retreat.css({"opacity": 1});
+			this.movers.advance.css({"opacity": 1});
+			this.atEnd = false;
+		}
+		
+		this.slideshowBox.animate({"left": leftiness}, Slideshow.STANDARD_ANIMATION_TIME);
 	},
 	center: function(location){
 		this.currentLocation = location;
@@ -240,6 +264,7 @@ Slideshow.describeOutfit = function(outfit){
 	}
 	return ret;
 };
+Slideshow.STANDARD_ANIMATION_TIME = 360;
 
 
 // Facebook

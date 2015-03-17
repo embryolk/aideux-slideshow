@@ -148,6 +148,7 @@ html, body{
             }
             &.retreat{
                 left: 20px;
+                opacity: 0;
                 &:after{
                     content: "<";
                 }
