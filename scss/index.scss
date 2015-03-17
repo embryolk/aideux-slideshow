@@ -7,6 +7,8 @@ $link_padding: 36px;
 
 $link_color: #333;
 $link_hover: #000;
+$link_anticolor: #CCC;
+$link_antihover: #FFF;
 
 $ribbon_width: 60px;
 $ribbon_padding: 8px;
@@ -27,6 +29,15 @@ $ribbon_padding: 8px;
     transition: all 0.3s ease;
     &:hover{
         color: $link_hover;
+    }
+}
+@mixin antisocial{
+    cursor: pointer;
+    color: $link_anticolor;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    &:hover{
+        color: $link_antihover;
     }
 }
 
@@ -111,7 +122,36 @@ html, body{
     &.slideshow{
         padding: 2px 1px;
         .slideshowBox{
-            height:100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+        .mover{
+            @include antisocial;
+            background-color: $link_color;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 5px $link_color;
+            position: absolute;
+            bottom: 20px;
+            z-index: 1;
+            text-align: center;
+            &.advance{
+                right: 20px;
+                &:after{
+                    content: ">";
+                }
+            }
+            &.retreat{
+                left: 20px;
+                &:after{
+                    content: "<";
+                }
+            }
         }
         .slide{
             float: left;

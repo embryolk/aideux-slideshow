@@ -5,11 +5,20 @@ var Slideshow = function(outfits, container){
 	this.minLeft = 0;
 	this.canCreep = 0;
 	
+	var self = this;
+	
 	this.slideshowBox = $("<div/>",{"class":"slideshowBox"}).
 			css("width", (outfits.length * 100) + "%");
 	
+	$("<div/>",{"class":"mover advance"}).
+			appendTo(container).
+			click(function(ev){ self.advance(); });
+	
+	$("<div/>",{"class":"mover retreat"}).
+			appendTo(container).
+			click(function(ev){ self.retreat(); });
+	
 	this.images = [];
-	var self = this;
 	$.each(outfits, function(i, outfit){
 		//var div = $("<div/>",{"class": 'slide'}).appendTo(container);
 		var div = $("<img/>",{
@@ -62,6 +71,8 @@ var Slideshow = function(outfits, container){
 		this.currentLocation = 0;
 	}
 	
+	/*
+	// Creeping
 	$(container).mousemove(function(ev){
 		if( self.canCreep ){
 			var creepThreshLeft = document.documentElement.clientWidth * 0.2;
@@ -87,11 +98,12 @@ var Slideshow = function(outfits, container){
 		self.stopCreeping();
 		self.canCreep = false;
 	});
-	
+
 	$(document).mouseleave(function(ev){
 		self.stopCreeping();
 		self.canCreep = false;
 	});
+	*/
 		
 	this.slideshowBox.load(function(ev){
 		if( self.currentLocation === 0 ){
@@ -110,7 +122,7 @@ var Slideshow = function(outfits, container){
 
 Slideshow.prototype = {
 	creep: function(){
-		var newLeft = parseInt(this.container.css("left")) - this.creepStep;
+		var newLeft = parseInt(this.slideshowBox.css("left")) - this.creepStep;
 		if( newLeft > 0 ){
 			newLeft = 0;
 		} else if( newLeft < this.minLeft ) {
@@ -151,18 +163,18 @@ Slideshow.prototype = {
 		this.currentLocation = location;
 		var leftiness = this.leftiness(location);
 		leftiness = Math.min(leftiness,0);
-		this.container.animate({
+		this.slideshowBox.animate({
 			"left": leftiness
 		}, 500);
 	},
 	center: function(location){
 		this.currentLocation = location;
-		this.container.css({
+		this.slideshowBox.css({
 			"left": this.leftiness(location)
 		});
 	},
 	constrainLeft: function(){
-		this.container.css({
+		this.slideshowBox.css({
 			"left": 0
 		});
 	},
