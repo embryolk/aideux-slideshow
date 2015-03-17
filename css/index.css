@@ -356,7 +356,7 @@ h3 {
     margin: 1em; }
 
 /* Smartphones (portrait) ----------- */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 620px) {
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003393}}
   #header .navButton {
     display: block;
