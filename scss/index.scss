@@ -121,6 +121,7 @@ html, body{
     
     &.slideshow{
         padding: 2px 1px;
+        overflow-x: scroll;
         .slideshowBox{
             position: absolute;
             top: 0;

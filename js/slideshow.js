@@ -10,7 +10,7 @@ var Slideshow = function(outfits, container){
 	
 	this.slideshowBox = $("<div/>",{"class":"slideshowBox"}).
 			css("width", (outfits.length * 100) + "%");
-	
+	/*
 	this.movers = {
 		advance: $("<div/>",{"class":"mover advance"}).
 				appendTo(container).
@@ -19,6 +19,7 @@ var Slideshow = function(outfits, container){
 				appendTo(container).
 				click(function(ev){ self.retreat(); })
 	};
+	*/
 	
 	this.images = [];
 	$.each(outfits, function(i, outfit){
@@ -203,8 +204,13 @@ Slideshow.prototype = {
 		});
 	},
 	refreshMinLeft: function(){
-		var lastImage = this.images[this.images.length-1].div;
-		this.minLeft = -( lastImage.position().left + lastImage.width() ) + this.container.width();
+		var fullWidth = 0;
+		for( var i in this.images ){
+			fullWidth += this.images[i].div.width() + 2;
+		}
+		console.log(fullWidth);
+		this.minLeft = -fullWidth + this.container.width();
+		this.slideshowBox.css("width", fullWidth );
 	},
 	facebook: function(idx){
 		var outfit = this.outfits[idx];
