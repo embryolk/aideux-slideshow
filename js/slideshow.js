@@ -107,6 +107,10 @@ var Slideshow = function(outfits, container){
 		self.canCreep = false;
 	});
 	*/
+   
+   $(container).bind('mousewheel', function(e){
+		self.inch(-e.originalEvent.wheelDelta);
+	});
 		
 	this.slideshowBox.load(function(ev){
 		if( self.currentLocation === 0 ){
@@ -132,7 +136,6 @@ Slideshow.prototype = {
 		} else if( newLeft < this.minLeft ) {
 			newLeft = this.minLeft;
 		}
-		console.log(newLeft);
 		this.container.css("left", newLeft );
 	},
 	stopCreeping: function(){
@@ -141,6 +144,11 @@ Slideshow.prototype = {
 			this.creepInterval = null;
 		}
 		this.creepStep = 0;
+	},
+	inch: function(amt){
+		var currLeft = this.container.scrollLeft();
+		console.log(currLeft + amt);
+		this.container.scrollLeft(currLeft + amt);
 	},
 	advance: function(){
 		if( this.currentLocation < this.images.length-1 ){
