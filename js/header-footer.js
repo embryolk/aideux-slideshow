@@ -3,16 +3,17 @@ var Header = function(container){
 
 	$("<a/>",{ 
 		"class" : "logo",
-		"href": '/aideux-slideshow'
+		"href": (window.location.host === "www.aideux.com" ? '/' : '/aideux-slideshow')
 	}).appendTo(this.$container);
 	
 	var links = $("<div/>",{ "class": "links" });
 	for( var i in Header.LINKS ){
 		var linkObj = Header.LINKS[i];
+		var url = (window.location.host === "www.aideux.com" ? linkObj.url : '/aideux-slideshow'+linkObj.url);
 		$("<a/>",{ 
 			"class": "link", 
 			"text": linkObj.title, 
-			"href": linkObj.url 
+			"href": url
 		}).appendTo(links);
 	}
 	links.appendTo(this.$container);
@@ -26,12 +27,13 @@ var Header = function(container){
 };
 
 Header.LINKS = [
-	{title:"Collections", url:"/aideux-slideshow/collections"},
-	{title:"Ordering Process", "url": "/aideux-slideshow/ordering"},
-	//{title:"Stocklists", "url": "stocklists"},
-	{title:"About", "url": "/aideux-slideshow/about"},
-	//{title:"Press", "url": "press"},
-	{title:"Contact", "url": "/aideux-slideshow/contact"}
+	{title:"Collections", url:"/collections"},
+	{title:"Ordering Process", "url": "/ordering"},
+	//{title:"Stockists", "url": "/stockists"},
+	{title:"About", "url": "/about"},
+	//{title:"Press", "url": "/press"},
+	//{title:"Blog", "url": "/blog"},
+	{title:"Contact", "url": "/contact"}
 ];
 
 
