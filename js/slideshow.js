@@ -6,6 +6,7 @@ var Slideshow = function(outfits, container){
 	this.canCreep = 0;
 	this.atEnd = false;
 	this.scrolled = 0;
+	this.concernWidth = 0;
 	
 	var self = this;
 	
@@ -141,7 +142,7 @@ var Slideshow = function(outfits, container){
 	
 	$( window ).resize(function() {
 		self.refreshMinLeft();
-		self.center(self.currentLocation);
+		self.center();
 	});
 	
 	this.slideshowBox.appendTo(container);
@@ -231,9 +232,16 @@ Slideshow.prototype = {
 		
 		var composition = $("<p/>", {"text": item.composition}).appendTo(describer);
 		$("<b/>", {"text": "composition: "}).prependTo(composition);
+		
+		this.concernWidth += 361;
+		this.refreshMinLeft();
+		//this.inch(361);
 	},
 	undescribe: function(ornaments){
 		ornaments.removeClass("open");
+		this.concernWidth -= 361;
+		this.refreshMinLeft();
+		//this.inch(-361);
 	},
 	center: function(location){
 		/*
@@ -250,11 +258,11 @@ Slideshow.prototype = {
 		});
 	},
 	refreshMinLeft: function(){
-		var fullWidth = 0;
+		var fullWidth = this.concernWidth;
 		for( var i in this.images ){
 			fullWidth += this.images[i].div.width() + 2;
 		}
-		console.log(fullWidth);
+		//console.log(fullWidth);
 		this.minLeft = -fullWidth + this.container.width();
 		this.slideshowBox.css("width", fullWidth );
 	},
