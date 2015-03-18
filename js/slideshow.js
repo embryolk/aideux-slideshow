@@ -220,26 +220,54 @@ Slideshow.prototype = {
 		this.slideshowBox.animate({"left": leftiness}, Slideshow.STANDARD_ANIMATION_TIME);
 	},
 	describe: function(item, ornaments){
+		var self = this;
+		
 		ornaments.find(".describer").remove();
 		ornaments.addClass("open");
 		var describer = $("<div/>",{"class": "describer"}).appendTo(ornaments);
-		$("<h2/>", {"text": item.name}).appendTo(describer);
+		
+		$("<div/>", {"class":"closer"}).appendTo(describer);
+		$("<h3/>", {"text": item.name}).appendTo(describer);
 		$("<p/>", {"text": item.description}).appendTo(describer);
-		$("<div/>", {"class":"quote", "text": item.quote}).appendTo(describer);
 		if( item.note ){
 			$("<p/>", {"text": item.note}).appendTo(describer);
 		}
 		
-		var composition = $("<p/>", {"text": item.composition}).appendTo(describer);
-		$("<b/>", {"text": "composition: "}).prependTo(composition);
+		$("<p/>", {"class":"metadata","text": "Composition: "+item.composition}).appendTo(describer);
+		//$("<p/>", {"class":"metadata","text": "Turnaround Time: "+item.availability}).appendTo(describer);
 		
-		this.concernWidth += 361;
+		$("<label/>", {"class":"breathe","text": "Alternate Views"}).appendTo(describer);
+		var grid = $("<div/>",{"class": "grid"}).appendTo(describer);
+		for( var i=0; i<3; i++ ){
+			var thumbnail = $("<img/>",{"src":"http://placekitten.com/g/54/54"}).appendTo(grid);
+			if( i===0 ){
+				thumbnail.addClass("chosen");
+			}
+		}
+		
+		$("<div/>",{"class":"price", "text":"$1,350.00"}).appendTo(describer);
+		//$("<div/>",{"class":"button", "text":"Check Availiability"}).appendTo(describer);
+		
+		$("<div/>", {"class":"quote", "text": item.quote}).appendTo(describer);
+		
+		var staples = $("<div/>", {"class":"staples"}).appendTo(describer);
+		/*
+		$("<a/>",{"text": "Returns & Exchanges"}).click(function(ev){
+			self.returnsModal();
+		}).appendTo(staples);
+		*/
+		$("<div/>",{"class":"ditch"}).appendTo(staples);
+		$("<a/>",{"text": "Sizing Guide"}).click(function(ev){
+			self.sizingModal();
+		}).appendTo(staples);
+		
+		this.concernWidth += 270;
 		this.refreshMinLeft();
 		//this.inch(361);
 	},
 	undescribe: function(ornaments){
 		ornaments.removeClass("open");
-		this.concernWidth -= 361;
+		this.concernWidth -= 270;
 		this.refreshMinLeft();
 		//this.inch(-361);
 	},
@@ -285,6 +313,15 @@ Slideshow.prototype = {
 				'&media='+encodeURI("http://www.aideux.com/collections/" + outfit.medium)+
 				'&description='+encodeURI(Slideshow.describeOutfit(outfit) + " from @Aideux");
 		window.open(pinterestUrl, 'Aideux | Pin It', 'resizable,scrollbars,status');
+	},
+	returnsModal: function(){
+		
+	},
+	sizingModal: function(){
+		
+	},
+	modal: function(){
+		
 	}
 };
 
