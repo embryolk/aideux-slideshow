@@ -174,7 +174,7 @@ html, body {
         margin-top: 20px;
         display: inline-block; }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003200}}
-      #show.slideshow .ornaments .describer * {
+      #show.slideshow .ornaments .describer > * {
         margin-left: 20px;
         margin-right: 20px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Jesse\/Documents\/GitHub\/aideux-slideshow\/scss\/index\.scss}line{font-family:\00003204}}
