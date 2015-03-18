@@ -72,6 +72,8 @@ var Slideshow = function(outfits, container){
 			});
 		}
 		
+		$("<div/>",{"class":"describer"}).appendTo(ornaments);
+		
 		self.images.push({ src: outfit, div: div });
 		
 		//div.click(function(idx){ return function(ev){ self.goto(idx); }; }(i) );
@@ -219,10 +221,10 @@ Slideshow.prototype = {
 		var self = this;
 		
 		ribbon.addClass("chosen");
-		
-		ornaments.find(".describer").remove();
 		ornaments.addClass("open");
-		var describer = $("<div/>",{"class": "describer"}).appendTo(ornaments);
+		
+		var describer = ornaments.find(".describer");
+		describer.html("");
 		
 		$("<div/>", {"class":"closer"}).click(function(ev){
 			self.undescribe(ornaments);
@@ -230,7 +232,7 @@ Slideshow.prototype = {
 		$("<h3/>", {"text": item.name}).appendTo(describer);
 		$("<p/>", {"text": item.description}).appendTo(describer);
 		if( item.note ){
-			$("<p/>", {"text": item.note}).appendTo(describer);
+			$("<p/>", {"class":"metadata","text": item.note}).appendTo(describer);
 		}
 		
 		$("<p/>", {"class":"metadata","text": "Composition: "+item.composition}).appendTo(describer);
@@ -317,13 +319,39 @@ Slideshow.prototype = {
 		window.open(pinterestUrl, 'Aideux | Pin It', 'resizable,scrollbars,status');
 	},
 	returnsModal: function(){
-		
+		var modal = this.modal();
+		$.get("returns.htmlf", function(data){
+			var modalInternals = $(data);
+			$("<div/>",{"class":"closer"}).appendTo(modalInternals);
+			modalInternals.appendTo(modal);
+		});
 	},
 	sizingModal: function(){
-		
+		var self = this;
+		var modal = this.modal();
+		$.get("sizing.htmlf", function(data){
+			var modalInternals = $(data);
+			$("<div/>",{"class":"closer"}).click(function(ev){
+				self.banishShadow(modal.container);
+			}).appendTo(modalInternals);
+			modalInternals.appendTo(modal.content);
+		});
 	},
 	modal: function(){
-		
+		var self = this;
+		var shade = $("<div/>",{"class":"shade"}).appendTo(document.body);
+		shade.click(function(ev){
+			self.banishShadow(shade);
+		});
+		return {
+			content: $("<div/>",{"class":"modal"}).appendTo(shade),
+			container: shade
+		};
+	},
+	banishShadow: function(shadow){
+		shadow.animate({"opacity":0}, 200, function(){
+			shadow.remove();
+		});
 	}
 };
 
@@ -341,7 +369,7 @@ Slideshow.getQueryVariable = function(variable){
 Slideshow.describeOutfit = function(outfit){
 	var ret = '';
 	if( outfit.cape ){
-		ret = outfit.cape;
+		ret = outfit.cape.name;
 	}
 	if( outfit.top ){
 		if( outfit.cape ){
@@ -351,7 +379,7 @@ Slideshow.describeOutfit = function(outfit){
 				ret += " and ";
 			}
 		}
-		ret += outfit.top;
+		ret += outfit.top.name;
 	}
 	if( outfit.bottom ){
 		if( outfit.cape && outfit.top ){
@@ -359,7 +387,7 @@ Slideshow.describeOutfit = function(outfit){
 		} else if( outfit.cape || outfit.top ){
 			ret += ' and ';
 		}
-		ret += outfit.bottom;
+		ret += outfit.bottom.name;
 	}
 	return ret;
 };
