@@ -339,14 +339,18 @@ Slideshow.prototype = {
 	},
 	modal: function(){
 		var self = this;
+		
 		var shade = $("<div/>",{"class":"shade"}).appendTo(document.body);
 		shade.click(function(ev){
 			self.banishShadow(shade);
 		});
-		return {
-			content: $("<div/>",{"class":"modal"}).appendTo(shade),
-			container: shade
-		};
+		
+		var modal = $("<div/>",{"class":"modal"}).appendTo(shade);
+		modal.click(function(ev){
+			ev.stopPropagation();
+		});
+		
+		return { content: modal, container: shade };
 	},
 	banishShadow: function(shadow){
 		shadow.animate({"opacity":0}, 200, function(){
