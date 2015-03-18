@@ -10,6 +10,7 @@ $link_hover: #000;
 $link_anticolor: #CCC;
 $link_antihover: #FFF;
 
+$describer_color: #efefef;
 $ribbon_width: 60px;
 $ribbon_padding: 8px;
 
@@ -26,7 +27,7 @@ $ribbon_padding: 8px;
     cursor: pointer;
     color: $link_color;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     &:hover{
         color: $link_hover;
     }
@@ -35,7 +36,7 @@ $ribbon_padding: 8px;
     cursor: pointer;
     color: $link_anticolor;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     &:hover{
         color: $link_antihover;
     }
@@ -171,7 +172,7 @@ html, body{
             width: 0px;
             height: 100%;
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             &:hover{
                 opacity: 1
             }
@@ -185,14 +186,15 @@ html, body{
                     opacity: 0;
                     &.chosen{
                         opacity: 1;
+                        background-color: $describer_color;
                     }
                 }
             }
             .describer{
-                transition: all 0.3s ease;
+                transition: all 0.2s ease;
                 opacity: 0;
                 height: 100%;
-                background-color: #efefef;
+                background-color: $describer_color;
                 color: $link_color;
                 .closer{
                     float: right;
@@ -201,6 +203,7 @@ html, body{
                     background-image: url('../images/closer.svg');
                     background-size: contain;
                     margin-top: 20px;
+                    cursor: pointer;
                 }
                 h3{
                     margin-top: 4em;
@@ -258,7 +261,7 @@ html, body{
                     color: #fff;
                     font-size: 0.7em;
                     padding: 2px 6px;
-                    transition: all 0.3s ease;
+                    transition: all 0.2s ease;
                     &:hover{
                         background-color: #aaa;
                     }
@@ -298,6 +301,7 @@ html, body{
                 }
             }
             .ribbon{
+                transition: all 0.2s ease;
                 cursor: pointer;
                 position: absolute;
                 width: 60px;

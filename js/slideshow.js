@@ -53,11 +53,9 @@ var Slideshow = function(outfits, container){
 			$("<div/>",{class:"phrase title",text:outfit.top.name}).appendTo(ribbonTop);
 			ribbonTop.click(function(ev){
 				if( ribbonTop.hasClass("chosen") ){
-					ribbonTop.removeClass("chosen");
 					self.undescribe(ornaments);
 				} else {
-					ribbonTop.addClass("chosen");
-					self.describe(outfit.top, ornaments);
+					self.describe(outfit.top, ornaments, ribbonTop);
 				}
 			});
 		}
@@ -67,11 +65,9 @@ var Slideshow = function(outfits, container){
 			$("<div/>",{class:"phrase title",text:outfit.bottom.name}).appendTo(ribbonBottom);
 			ribbonBottom.click(function(ev){
 				if( ribbonBottom.hasClass("chosen") ){
-					ribbonBottom.removeClass("chosen");
 					self.undescribe(ornaments);
 				} else {
-					ribbonBottom.addClass("chosen");
-					self.describe(outfit.bottom, ornaments);
+					self.describe(outfit.bottom, ornaments, ribbonBottom);
 				}
 			});
 		}
@@ -219,14 +215,18 @@ Slideshow.prototype = {
 		
 		this.slideshowBox.animate({"left": leftiness}, Slideshow.STANDARD_ANIMATION_TIME);
 	},
-	describe: function(item, ornaments){
+	describe: function(item, ornaments, ribbon){
 		var self = this;
+		
+		ribbon.addClass("chosen");
 		
 		ornaments.find(".describer").remove();
 		ornaments.addClass("open");
 		var describer = $("<div/>",{"class": "describer"}).appendTo(ornaments);
 		
-		$("<div/>", {"class":"closer"}).appendTo(describer);
+		$("<div/>", {"class":"closer"}).click(function(ev){
+			self.undescribe(ornaments);
+		}).appendTo(describer);
 		$("<h3/>", {"text": item.name}).appendTo(describer);
 		$("<p/>", {"text": item.description}).appendTo(describer);
 		if( item.note ){
@@ -263,13 +263,15 @@ Slideshow.prototype = {
 		
 		this.concernWidth += 270;
 		this.refreshMinLeft();
-		//this.inch(361);
+		if( ornaments.is(':last-child') ){
+			this.inch(270);
+		}
 	},
 	undescribe: function(ornaments){
+		ornaments.find(".ribbon.chosen").removeClass("chosen");
 		ornaments.removeClass("open");
 		this.concernWidth -= 270;
 		this.refreshMinLeft();
-		//this.inch(-361);
 	},
 	center: function(location){
 		/*
