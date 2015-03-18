@@ -5,6 +5,7 @@ var Slideshow = function(outfits, container){
 	this.minLeft = 0;
 	this.canCreep = 0;
 	this.atEnd = false;
+	this.scrolled = 0;
 	
 	var self = this;
 	
@@ -45,15 +46,33 @@ var Slideshow = function(outfits, container){
 				click(function(){ self.pinterest(i); }).
 				appendTo(ornaments);
 				
-		if( outfits[i].top ){
+		if( outfit.top ){
 			var ribbonTop = $("<div/>",{"class": 'ribbon top'}).appendTo(ornaments);
 			$("<div/>",{class:"phrase type",text:"The Top"}).appendTo(ribbonTop);
-			$("<div/>",{class:"phrase title",text:outfit.top}).appendTo(ribbonTop);
+			$("<div/>",{class:"phrase title",text:outfit.top.name}).appendTo(ribbonTop);
+			ribbonTop.click(function(ev){
+				if( ribbonTop.hasClass("chosen") ){
+					ribbonTop.removeClass("chosen");
+					self.undescribe(ornaments);
+				} else {
+					ribbonTop.addClass("chosen");
+					self.describe(outfit.top, ornaments);
+				}
+			});
 		}
-		if( outfits[i].bottom ){
+		if( outfit.bottom ){
 			var ribbonBottom = $("<div/>",{"class": 'ribbon bottom'}).appendTo(ornaments);
 			$("<div/>",{class:"phrase type",text:"The Bottom"}).appendTo(ribbonBottom);
-			$("<div/>",{class:"phrase title",text:outfit.bottom}).appendTo(ribbonBottom);
+			$("<div/>",{class:"phrase title",text:outfit.bottom.name}).appendTo(ribbonBottom);
+			ribbonBottom.click(function(ev){
+				if( ribbonBottom.hasClass("chosen") ){
+					ribbonBottom.removeClass("chosen");
+					self.undescribe(ornaments);
+				} else {
+					ribbonBottom.addClass("chosen");
+					self.describe(outfit.bottom, ornaments);
+				}
+			});
 		}
 		
 		self.images.push({ src: outfit, div: div });
@@ -146,9 +165,8 @@ Slideshow.prototype = {
 		this.creepStep = 0;
 	},
 	inch: function(amt){
-		var currLeft = this.container.scrollLeft();
-		console.log(currLeft + amt);
-		this.container.scrollLeft(currLeft + amt);
+		this.container.scrollLeft(this.container.scrollLeft() + amt);
+		this.scrolled = this.container.scrollLeft();
 	},
 	advance: function(){
 		if( this.currentLocation < this.images.length-1 ){
@@ -200,11 +218,31 @@ Slideshow.prototype = {
 		
 		this.slideshowBox.animate({"left": leftiness}, Slideshow.STANDARD_ANIMATION_TIME);
 	},
+	describe: function(item, ornaments){
+		ornaments.find(".describer").remove();
+		ornaments.addClass("open");
+		var describer = $("<div/>",{"class": "describer"}).appendTo(ornaments);
+		$("<h2/>", {"text": item.name}).appendTo(describer);
+		$("<p/>", {"text": item.description}).appendTo(describer);
+		$("<div/>", {"class":"quote", "text": item.quote}).appendTo(describer);
+		if( item.note ){
+			$("<p/>", {"text": item.note}).appendTo(describer);
+		}
+		
+		var composition = $("<p/>", {"text": item.composition}).appendTo(describer);
+		$("<b/>", {"text": "composition: "}).prependTo(composition);
+	},
+	undescribe: function(ornaments){
+		ornaments.removeClass("open");
+	},
 	center: function(location){
+		/*
 		this.currentLocation = location;
 		this.slideshowBox.css({
 			"left": this.leftiness(location)
 		});
+		*/
+	   this.container.scrollLeft(this.scrolled);
 	},
 	constrainLeft: function(){
 		this.slideshowBox.css({

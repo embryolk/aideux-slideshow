@@ -25,7 +25,7 @@ and open the template in the editor.
         <div id="header"></div>
 
         <div id="show" class="slideshow content"></div>
-        
+
         <div id="footer"></div>
 
         <script type="text/javascript">
@@ -33,85 +33,276 @@ and open the template in the editor.
                 var header = new Header($("#header"));
                 //var footer = new Footer($("#footer"));
 
+                var items = {
+                    tops: {
+                        elizabeth: {
+                            regular: {
+                                name: "Elizabeth Beaded Top",
+                                description: "V-neck bodice with hand-beaded, intricate floral design using white, iridescent beading. Back zip closure.",
+                                quote: "A lady's imagination is very rapid; it jumps from admiration to love, from love to matrimony, in a moment.",
+                                note: null,
+                                composition: "silk georgette",
+                                availability: "Please allow up to 3 months for delivery."
+                            }
+                        },
+                        alice: {
+                            white: {
+                                name: "Alice Top (White)",
+                                description: "Sleek illusion cowl, hand-draped from front to back, ending with feminine chiffon pleats at waist.  Fully lined. Back zip closure.",
+                                quote: "Why, sometimes I've believed as many as six impossible things before breakfast.",
+                                note: "Also available in navy",
+                                composition: "6-ply silk crepe, silk chiffon, silk habotai lining",
+                                availability: ""
+                            },
+                            navy: {
+                                name: "Alice Top (Navy)",
+                                description: "Sleek illusion cowl, hand-draped from front to back, ending with feminine chiffon pleats at waist.  Fully lined. Back zip closure.",
+                                quote: "Why, sometimes I've believed as many as six impossible things before breakfast.",
+                                note: "Also available in white",
+                                composition: "6-ply silk crepe, silk chiffon, silk habotai lining",
+                                availability: ""
+                            }
+                        },
+                        eyre: {
+                            lace: {
+                                name: "Eyre Bustier (Lace)",
+                                description: "Bold lace bodice lightly boned for definition and subtle support. Fully lined. Back zip closure.",
+                                quote: "I'll walk where my own nature would be leading. It vexes me to choose another guide. ",
+                                note: "Also available in white and navy silk crepe-back satin.",
+                                composition: "bold lace, silk habotai lining",
+                                availability: "Please allow up to 1 month for delivery."
+                            },
+                            white: {
+                                name: "Eyre Bustier (White Silk Crepe-Back Satin)",
+                                description: "Light, soft silk bodice lightly boned for definition and subtle support. Fully lined. Back zip closure.",
+                                quote: "Reader, I married him.",
+                                note: "Also available in bold lace and navy silk crepe back satin.",
+                                composition: "silk crepe-back satin, silk habotai lining",
+                                availability: "Please allow up to 1 month for delivery."
+                            },
+                            navy: {
+                                name: "Eyre Bustier (Navy Silk Crepe-Back Satin)",
+                                description: "Light, soft silk bodice lightly boned for definition and subtle support. Fully lined. Back zip closure.",
+                                quote: "Reader, I married him.",
+                                note: "Also available in bold lace and white silk crepe back satin.",
+                                composition: "silk crepe-back satin, silk habotai lining",
+                                availability: "Please allow up to 1 month for delivery."
+                            }
+                        },
+                        jo: {
+                            regular: {
+                                name: "Jo Top",
+                                description: "A timeless silhouette, this silk top features a sweetheart neckline and a low back. Fully lined. Back zip closure.",
+                                quote: "Jo's ambition was to do something very splendid; what it was she had no idea, as yet, but left it for time to tell her…",
+                                note: "",
+                                composition: "6 ply silk crepe, silk habotai lining",
+                                availability: "Please allow up to 1 month for delivery."
+                            }
+                        },
+                        scarlett: {
+                            regular: {
+                                name: "Scarlett Blouse",
+                                description: "Sheer silk chiffon blouse layer over a slim fitted silk tank for effortless femininity. Fully lined. Back zip closure.",
+                                quote: "“Hush,” he said. ”I am asking you to marry me. Would you be convinced if I knelt down?” ",
+                                note: "",
+                                composition: "6 ply silk crepe, silk chiffon, silk habotai lining",
+                                availability: "Please allow up to 3 months for delivery."
+                            }
+                        }
+                    },
+                    bottoms: {
+                        eyre: {
+                            sheer: {
+                                name: "Eyre Skirt (Sheer)",
+                                description: "Gathered, wrap silk chiffon skirt in a romantic, floor-sweeping silhouette. Fully lined with luxe silk.",
+                                quote: "I ask you to pass through life at my side—to be my second self, and best earthly companion.",
+                                note: "Also available in fine lace.",
+                                composition: "silk chiffon, silk crepe de chine lining",
+                                availability: "Please allow up to 1 month for delivery."
+                            },
+                            lace: {
+                                name: "Eyre Skirt (Lace)",
+                                description: "Our most popular style, the wrap, gathered skirt, in full lace over luxe silk lining.",
+                                quote: "I am no bird; and no net ensnares me.",
+                                note: "Also available in sheer silk chiffon.",
+                                composition: "Fine lace, crepe de chine lining ",
+                                availability: "Please allow up to 3 months for delivery."
+                            }
+                        },
+                        elizabeth: {
+                            regular: {
+                                name: "Elizabeth Pant",
+                                description: "Slim fit pant crafted with smooth silk for an elegant drape. Fully lined. Front zip closure.",
+                                quote: "Is not general incivility the very essence of love?",
+                                note: "",
+                                composition: "6 ply silk crepe, silk habotai lining",
+                                availability: "Please allow up to 2 months for delivery."
+                            }
+                        },
+                        jo: {
+                            lace: {
+                                name: "Jo Column Skirt (Lace)",
+                                description: "Slimming, subtle mermaid shape skirt with a dramatic train. Bold lace for a polished, scalloped hem. Fully lined. Back zip closure.",
+                                quote: "I’d rather take coffee than compliments just now.",
+                                note: "Also available in white and navy silk crepe-back satin.",
+                                composition: "Bold Lace, silk crepe de chine lining",
+                                availability: "Please allow up to 3 months for delivery."
+                            },
+                            white: {
+                                name: "Jo Column Skirt (White Silk Crepe-Back Satin)",
+                                description: "Slimming, subtle mermaid shape skirt with a dramatic train. Back zip closure.",
+                                quote: "I’d rather take coffee than compliments just now.",
+                                note: "Also available in lace and navy silk crepe-back satin.",
+                                composition: "Silk crepe-back satin, silk crepe de chine lining",
+                                availability: "Please allow up to 3 months for delivery."
+                            },
+                            navy: {
+                                name: "Jo Column Skirt (Navy Silk Crepe-Back Satin)",
+                                description: "Slimming, subtle mermaid shape skirt with a dramatic train. Back zip closure.",
+                                quote: "I’d rather take coffee than compliments just now.",
+                                note: "Also available in lace and white silk crepe-back satin.",
+                                composition: "Silk crepe-back satin, silk crepe de chine lining",
+                                availability: "Please allow up to 3 months for delivery."
+                            }
+                        },
+                        alice: {
+                            ivory: {
+                                name: "Alice Pencil Skirt (Ivory Silk Crepe-Back Satin)",
+                                description: "Classic pencil skirt in fine silks, featuring a slim waistband and a polished, scalloped hem. Fully lined. Back zip closure.",
+                                quote: "Why, sometimes I've believed as many as six impossible things before breakfast.",
+                                note: "Also available in fine lace and navy silk crepe-back satin.",
+                                composition: "6-ply silk crepe, silk chiffon, silk habotai lining",
+                                availability: "Please allow up to 2 months for delivery."
+                            },
+                            lace: {
+                                name: "Alice Pencil Skirt (Lace)",
+                                description: "Classic pencil skirt with rich, bold lace, a slim waistband and a scalloped hem finish. Fully lined. Back zip closure.",
+                                quote: "Curiouser and curiouser!",
+                                note: "Also available in ivory and navy silk crepe-back satin.",
+                                composition: "Bold Lace, silk crepe de chine lining",
+                                availability: "Please allow up to 3 months for delivery."
+                            },
+                            navy: {
+                                name: "Alice Pencil Skirt (Navy Silk Crepe-Back Satin)",
+                                description: "Classic pencil skirt in fine silks, featuring a slim waistband and a polished, scalloped edge finish. Fully lined. Back zip closure.",
+                                quote: "You're entirely bonkers. But I'll tell you a secret. All the best people are.",
+                                note: "Also available in bold lace and ivory silk crepe-back satin.",
+                                composition: "Silk crepe-back satin, silk crepe de chine lining",
+                                availability: "Please allow up to 2 months for delivery."
+                            }
+                        },
+                        scarlett: {
+                            regular: {
+                                name: "Scarlett Wrap Skirt",
+                                description: "Silk wrap skirt in a romantic, floor-sweeping silhouette. Fully lined.",
+                                quote: "I want to make you faint. I will make you faint. You've had this coming to you for years. None of the fools you've known have kissed you like this - have they? … What do they know about you? I know you.",
+                                note: "Also available in navy silk crepe back satin.",
+                                composition: "Silk crepe back satin, silk crepe de chine lining",
+                                availability: "Please allow up to 1 month for delivery."
+                            }
+                        }
+                    },
+                    capes: {
+                        nancy: {
+                            sheer: {
+                                name: "Nancy Cape (Sheer)",
+                                description: "Sheer, delicate silk chiffon cape, perfect for a cover-up or to add a little glamour. ",
+                                quote: "Do act mysterious. It always keeps them coming back for more.",
+                                note: "Also available in non-sheer silk.",
+                                composition: "silk chiffon",
+                                availability: "Please allow up to 1 month for delivery."
+                            },
+                            nonsheer: {
+                                name: "Nancy Cape (Non-Sheer)",
+                                description: "Modern silk cape in a clean shape with a subtle sheen. For the bride who desire a cover-up or to add a little glamour. Front hook closure.",
+                                quote: "The best way to lose a boy is to chase after him. ",
+                                note: "Also available in sheer silk chiffon.",
+                                composition: "silk crepe back satin",
+                                availability: "Please allow up to 1 month for delivery."
+                            }
+                        }
+                    }
+                };
+
                 var slides = [
-                    { 
-                        large: "images/large/001.jpg", 
+                    {
+                        large: "images/large/001.jpg",
                         medium: "images/medium/001.jpg",
-                        top: "Beaded Elizabeth Top",
-                        bottom: "Eyre Gathered Skirt",
+                        top: items.tops.elizabeth.regular,
+                        bottom: items.bottoms.eyre.sheer,
                         related: []
-                    },{ 
-                        large: "images/large/002.jpg", 
+                    }, {
+                        large: "images/large/002.jpg",
                         medium: "images/medium/002.jpg",
-                        top: "Alice Top",
-                        bottom: "Elizabeth Pant",
+                        top: items.tops.alice.white,
+                        bottom: items.bottoms.elizabeth.regular,
                         related: []
-                    },{ 
-                        large: "images/large/003.jpg", 
+                    }, {
+                        large: "images/large/003.jpg",
                         medium: "images/medium/003.jpg",
-                        cape: "Nancy Cape",
-                        top: "Eyre Bustier",
+                        cape: items.capes.nancy.sheer,
+                        top: items.tops.eyre.lace,
                         related: []
-                    },{ 
-                        large: "images/large/004.jpg", 
+                    }, {
+                        large: "images/large/004.jpg",
                         medium: "images/medium/004.jpg",
-                        top: "Eyre Bustier",
-                        bottom: "Alice Pencil Skirt",
+                        top: items.tops.eyre.lace,
+                        bottom: items.bottoms.alice.lace,
                         related: []
-                    },{ 
-                        large: "images/large/005.jpg", 
+                    }, {
+                        large: "images/large/005.jpg",
                         medium: "images/medium/005.jpg",
-                        top: "Jo Top",
-                        bottom: "Jo Column Skirt",
+                        top: items.tops.jo.regular,
+                        bottom: items.bottoms.jo.white,
                         related: []
-                    },{ 
-                        large: "images/large/006.jpg", 
+                    }, {
+                        large: "images/large/006.jpg",
                         medium: "images/medium/006.jpg",
-                        cape: "Nancy Cape",
-                        top: "Eyre Bustier",
+                        cape: items.capes.nancy.nonsheer,
+                        top: items.tops.eyre.white,
                         bottom: "Jo Column Skirt",
                         related: []
-                    },{ 
-                        large: "images/large/007.jpg", 
+                    }, {
+                        large: "images/large/007.jpg",
                         medium: "images/medium/007.jpg",
-                        top: "Eyre Bustier",
-                        bottom: "Jo Column Skirt",
+                        top: items.tops.eyre.lace,
+                        bottom: items.bottoms.jo.lace,
                         related: []
-                    },{ 
-                        large: "images/large/008.jpg", 
+                    }, {
+                        large: "images/large/008.jpg",
                         medium: "images/medium/008.jpg",
-                        top: "Eyre Bustier",
-                        bottom: "Eyre Gathered Skirt",
+                        top: items.tops.eyre.white,
+                        bottom: items.bottoms.eyre.sheer,
                         related: []
-                    },{ 
-                        large: "images/large/009.jpg", 
+                    }, {
+                        large: "images/large/009.jpg",
                         medium: "images/medium/009.jpg",
-                        top: "Odette Top",
-                        bottom: "Odette Wrap Skirt",
+                        top: items.tops.scarlett.regular,
+                        bottom: items.bottoms.scarlett.regular,
                         related: []
-                    },{ 
-                        large: "images/large/010.jpg", 
+                    }, {
+                        large: "images/large/010.jpg",
                         medium: "images/medium/010.jpg",
-                        top: "Jo Top",
-                        bottom: "Odette Wrap Skirt",
+                        top: items.tops.jo.regular,
+                        bottom: items.bottoms.scarlett.regular,
                         related: []
-                    },{ 
-                        large: "images/large/011.jpg", 
+                    }, {
+                        large: "images/large/011.jpg",
                         medium: "images/medium/011.jpg",
-                        top: "Eyre Bustier",
-                        bottom: "Eyre Gathered Skirt",
+                        top: items.tops.eyre.navy,
+                        bottom: items.bottoms.eyre.lace,
                         related: []
-                    },{ 
-                        large: "images/large/012.jpg", 
+                    }, {
+                        large: "images/large/012.jpg",
                         medium: "images/medium/012.jpg",
-                        top: "Alice Top",
-                        bottom: "Alice Pencil Skirt",
+                        top: items.tops.alice.navy,
+                        bottom: items.bottoms.alice.navy,
                         related: []
                     }
                 ];
                 var slideshow = new Slideshow(slides, $("#show"));
             });
         </script>
-                
+
     </body>
 </html>

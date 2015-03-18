@@ -174,6 +174,48 @@ html, body{
             &:hover{
                 opacity: 1
             }
+            &.open{
+                width: 360px;
+                opacity: 1;
+                .describer{
+                    opacity: 1;
+                }
+                .ribbon{
+                    opacity: 0;
+                    &.chosen{
+                        opacity: 1;
+                    }
+                }
+            }
+            .describer{
+                transition: all 0.3s ease;
+                opacity: 0;
+                height: 100%;
+                background-color: #eee;
+                h2{
+                    margin-top: 20px;
+                    display: inline-block;
+                }
+                *{
+                    margin-left: 20px;
+                    margin-right: 20px;
+                }
+                .quote{
+                    padding: 0px 20px;
+                    font-style: italic;
+                    font-size: 1em;
+                    &:before{
+                        font-weight: bold;
+                        font-size: 1.4em;
+                        content: '"';
+                    }
+                    &:after{
+                        font-weight: bold;
+                        font-size: 1.4em;
+                        content: '"';
+                    }
+                }
+            }
             .ribbon{
                 cursor: pointer;
                 position: absolute;
