@@ -220,6 +220,7 @@ Slideshow.prototype = {
 	describe: function(item, ornaments, ribbon){
 		var self = this;
 		
+		this.undescribe(ornaments);
 		ribbon.addClass("chosen");
 		ornaments.addClass("open");
 		
@@ -236,8 +237,9 @@ Slideshow.prototype = {
 		}
 		
 		$("<p/>", {"class":"metadata","text": "Composition: "+item.composition}).appendTo(describer);
-		//$("<p/>", {"class":"metadata","text": "Turnaround Time: "+item.availability}).appendTo(describer);
+		$("<p/>", {"class":"metadata","text": "Turnaround Time: "+item.availability}).appendTo(describer);
 		
+		/*
 		$("<label/>", {"class":"breathe","text": "Alternate Views"}).appendTo(describer);
 		var grid = $("<div/>",{"class": "grid"}).appendTo(describer);
 		for( var i=0; i<3; i++ ){
@@ -246,22 +248,27 @@ Slideshow.prototype = {
 				thumbnail.addClass("chosen");
 			}
 		}
-		
+		*/
+				
 		$("<div/>",{"class":"price", "text":"$1,350.00"}).appendTo(describer);
-		//$("<div/>",{"class":"button", "text":"Check Availiability"}).appendTo(describer);
 		
-		$("<div/>", {"class":"quote", "text": item.quote}).appendTo(describer);
 		
-		var staples = $("<div/>", {"class":"staples"}).appendTo(describer);
-		/*
+		var staples = $("<div/>", {"class":"staples"}).appendTo(describer);		
 		$("<a/>",{"text": "Returns & Exchanges"}).click(function(ev){
 			self.returnsModal();
 		}).appendTo(staples);
-		*/
+		
 		$("<div/>",{"class":"ditch"}).appendTo(staples);
 		$("<a/>",{"text": "Sizing Guide"}).click(function(ev){
 			self.sizingModal();
 		}).appendTo(staples);
+		
+		//$("<div/>",{"class":"button", "text":"Check Availiability"}).appendTo(describer);
+		
+		
+		
+		
+		$("<div/>", {"class":"quote", "text": item.quote}).appendTo(describer);
 		
 		this.concernWidth += 270;
 		this.refreshMinLeft();
