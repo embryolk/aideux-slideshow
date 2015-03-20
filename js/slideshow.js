@@ -221,6 +221,7 @@ Slideshow.prototype = {
 		var self = this;
 		
 		this.undescribe(ornaments);
+		
 		ribbon.addClass("chosen");
 		ornaments.addClass("open");
 		
@@ -299,16 +300,18 @@ Slideshow.prototype = {
 		$("<div/>", {"class":"quote", "text": item.quote}).appendTo(describer);
 		
 		
-		this.concernWidth += 270;
+		this.concernWidth += 272;
 		this.refreshMinLeft();
 		if( ornaments.is(':last-child') ){
 			this.inch(270);
 		}
 	},
 	undescribe: function(ornaments){
-		ornaments.find(".ribbon.chosen").removeClass("chosen");
-		ornaments.removeClass("open");
-		this.concernWidth -= 270;
+		if( ornaments.hasClass("open") ){
+			ornaments.find(".ribbon.chosen").removeClass("chosen");
+			ornaments.removeClass("open");
+			this.concernWidth -= 272;
+		}
 		this.refreshMinLeft();
 	},
 	center: function(location){
