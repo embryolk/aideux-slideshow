@@ -297,7 +297,7 @@ Slideshow.prototype = {
 		
 		
 		// Lingers
-		$("<div/>", {"class":"quote", "text": item.quote}).appendTo(describer);
+		$("<div/>", {"class":"quote", "text": item.style.quote}).appendTo(describer);
 		
 		
 		this.concernWidth += 272;

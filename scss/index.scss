@@ -701,3 +701,10 @@ and (max-width : 620px) {
         }
     }
 }
+
+@media only screen 
+and (max-height : 670px) {
+    .quote{
+        display: none;
+    }
+}
