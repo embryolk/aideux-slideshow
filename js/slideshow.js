@@ -50,7 +50,7 @@ var Slideshow = function(outfits, container){
 		if( outfit.top ){
 			var ribbonTop = $("<div/>",{"class": 'ribbon top'}).appendTo(ornaments);
 			$("<div/>",{class:"phrase type",text:"The Top"}).appendTo(ribbonTop);
-			$("<div/>",{class:"phrase title",text:outfit.top.name}).appendTo(ribbonTop);
+			$("<div/>",{class:"phrase title",text: Slideshow.nameItem(outfit.top)}).appendTo(ribbonTop);
 			ribbonTop.click(function(ev){
 				if( ribbonTop.hasClass("chosen") ){
 					self.undescribe(ornaments);
@@ -62,7 +62,7 @@ var Slideshow = function(outfits, container){
 		if( outfit.bottom ){
 			var ribbonBottom = $("<div/>",{"class": 'ribbon bottom'}).appendTo(ornaments);
 			$("<div/>",{class:"phrase type",text:"The Bottom"}).appendTo(ribbonBottom);
-			$("<div/>",{class:"phrase title",text:outfit.bottom.name}).appendTo(ribbonBottom);
+			$("<div/>",{class:"phrase title",text: Slideshow.nameItem(outfit.bottom)}).appendTo(ribbonBottom);
 			ribbonBottom.click(function(ev){
 				if( ribbonBottom.hasClass("chosen") ){
 					self.undescribe(ornaments);
@@ -227,17 +227,23 @@ Slideshow.prototype = {
 		var describer = ornaments.find(".describer");
 		describer.html("");
 		
+		var itemName = Slideshow.nameItem(item);
+		
+		// Descriptions (Left-Aligned)
 		$("<div/>", {"class":"closer"}).click(function(ev){
 			self.undescribe(ornaments);
 		}).appendTo(describer);
-		$("<h3/>", {"text": item.name}).appendTo(describer);
-		$("<p/>", {"text": item.description}).appendTo(describer);
-		if( item.note ){
-			$("<p/>", {"class":"metadata","text": item.note}).appendTo(describer);
+		$("<h3/>", {"text": itemName}).appendTo(describer);
+		$("<p/>", {"text": item.style.description}).appendTo(describer);
+		if( item.item.styles.length > 1 ){
+			var list =  item.item.styles.join(", ");
+			var anderIndex = note.lastIndexOf(",");
+			list = list.substring(0,anderIndex) + " and" + list.substring(anderIndex, list.length);
+			$("<p/>", {"class":"metadata","text": "Also available in "+list}).appendTo(describer);
 		}
 		
-		$("<p/>", {"class":"metadata","text": "Composition: "+item.composition}).appendTo(describer);
-		$("<p/>", {"class":"metadata","text": "Turnaround Time: "+item.availability}).appendTo(describer);
+		$("<p/>", {"class":"metadata","text": "Composition: "+item.style.composition}).appendTo(describer);
+		$("<p/>", {"class":"metadata","text": "Turnaround Time: "+item.style.availability}).appendTo(describer);
 		
 		/*
 		$("<label/>", {"class":"breathe","text": "Alternate Views"}).appendTo(describer);
@@ -250,25 +256,48 @@ Slideshow.prototype = {
 		}
 		*/
 				
-		$("<div/>",{"class":"price", "text":"$1,350.00"}).appendTo(describer);
-		
+		// Brass Tax (Right-Aligned)
+		$("<div/>",{"class":"price", "text":Slideshow.formatPrice(item.item.price)}).appendTo(describer);
 		
 		var staples = $("<div/>", {"class":"staples"}).appendTo(describer);		
+		/*
 		$("<a/>",{"text": "Returns & Exchanges"}).click(function(ev){
 			self.returnsModal();
 		}).appendTo(staples);
-		
 		$("<div/>",{"class":"ditch"}).appendTo(staples);
+		 */
 		$("<a/>",{"text": "Sizing Guide"}).click(function(ev){
 			self.sizingModal();
 		}).appendTo(staples);
 		
-		//$("<div/>",{"class":"button", "text":"Check Availiability"}).appendTo(describer);
+		
+		// Order Form
+		var purchaseForm = $("<form/>", {
+			"action":"https://aideux.foxycart.com/cart",
+			"method":"POST",
+			"accept-charset": "utf-8"
+		}).appendTo(describer);
+		$("<input/>",{"type":"hidden","name":"name","value":itemName}).appendTo(purchaseForm);
+		$("<input/>",{"type":"hidden","name":"price","value":item.item.price}).appendTo(purchaseForm);
+		$("<input/>",{"type":"hidden","name":"code","value":item.item.id}).appendTo(purchaseForm);
+		var sizeSelect = $("<select/>",{"name":"size"}).appendTo(purchaseForm);
+		for( var i in Slideshow.SIZES ){
+			var size = Slideshow.SIZES[i];
+			$("<option/>", {"value": size,"text": size}).appendTo(sizeSelect);
+		}
+		if( !item.item.styles.original ){
+			var styleSelect = $("<select/>",{"name":"style"}).appendTo(purchaseForm);
+			for( var i in item.item.styles ){
+				var style = item.item.styles[i];
+				$("<option/>", {"value": style.name,"text": style.name}).appendTo(styleSelect);
+			}
+		}
+		$("<input/>",{"type":"submit", "class":"button", "value":"Add To Cart"}).appendTo(purchaseForm);
 		
 		
-		
-		
+		// Lingers
 		$("<div/>", {"class":"quote", "text": item.quote}).appendTo(describer);
+		
 		
 		this.concernWidth += 270;
 		this.refreshMinLeft();
@@ -402,6 +431,27 @@ Slideshow.describeOutfit = function(outfit){
 	}
 	return ret;
 };
+Slideshow.nameItem = function(item){
+	var name = item.item.name;
+	if( item.style.name ){
+		name += " ("+item.style.name+")";
+	}
+	return name;
+};
+Slideshow.formatPrice = function(price){
+	price = price.toString();
+	var priceString = "$";
+	for( var i=0; i<price.length; i++ ){
+		if( (price.length - i) % 3 === 0 ){
+			priceString += ",";
+		}
+		priceString += price[i];
+	}
+	return priceString + ".00";
+};
+
+
+Slideshow.SIZES = ["XS","S","M","L"];
 Slideshow.STANDARD_ANIMATION_TIME = 360;
 
 
