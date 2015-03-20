@@ -1,0 +1,95 @@
+<div class='sizing'>
+    <div class='sheet'>
+        <h1>Sizing Guide</h1>
+        <h3>(In Inches)</h3>
+        
+        <table class='sizingTable'>
+            <tbody>
+                <tr>
+                    <td class='label'>Size</td>
+                    <td colspan="2">XS</td>
+                    <td colspan="2">S</td>
+                    <td colspan="2">M</td>
+                    <td colspan="2">L</td>
+                </tr>
+                <tr>
+                    <td class='label'></td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>4</td>
+                    <td>6</td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td>12</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td class='label'>Bust</td>
+                    <td>31.0</td>
+                    <td>32.0</td>
+                    <td>33.0</td>
+                    <td>34.0</td>
+                    <td>35.0</td>
+                    <td>36.5</td>
+                    <td>38.0</td>
+                    <td>39.5</td>
+                </tr>
+                <tr>
+                    <td class='label'>Waist</td>
+                    <td>25.0</td>
+                    <td>26.0</td>
+                    <td>27.0</td>
+                    <td>28.0</td>
+                    <td>29.0</td>
+                    <td>30.5</td>
+                    <td>32.0</td>
+                    <td>33.5</td>
+                </tr>
+                <tr>
+                    <td class='label'>Hip</td>
+                    <td>35.0</td>
+                    <td>36.0</td>
+                    <td>37.0</td>
+                    <td>38.0</td>
+                    <td>39.0</td>
+                    <td>40.5</td>
+                    <td>42.0</td>
+                    <td>43.5</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class='instructions'>
+            <p class='instruction'>
+                <label>Bust: </label>
+                <span>
+                    Measure across the fullest part of your bust.
+                </span>
+            </p>
+            <p class='instruction'>
+                <label>Waist: </label>
+                <span>
+                    Measure the slimmest part of your wasitline. 
+                    Usually above your navel but below your ribs.
+                </span>
+            </p>
+            <p class='instruction'>
+                <label>Hip: </label>
+                <span>
+                    Measure the fullset part of your hip. 
+                    About 10 inches below your waist.
+                </span>
+            </p>
+        </div>
+
+        <p>
+            If measuring yourself, please measure with the underpinnings you'll be wearing under the dress. Keep the measuring tape taut but not too tight.
+        </p>
+
+        <p>
+            If you need assitance, do email us at <a href='../contact'>info@aideux.com</a> and we'll get right back to you.
+        </p>
+
+    </div>
+    <img class='diagram' src='../images/collections-sizing.jpg' />
+</div>
