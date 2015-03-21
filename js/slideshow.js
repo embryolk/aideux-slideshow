@@ -244,7 +244,7 @@ Slideshow.prototype = {
 		}
 		
 		$("<p/>", {"class":"metadata","text": "Composition: "+item.style.composition}).appendTo(describer);
-		$("<p/>", {"class":"metadata","text": "Turnaround Time: "+item.style.availability}).appendTo(describer);
+		//$("<p/>", {"class":"metadata","text": "Turnaround Time: "+item.style.availability}).appendTo(describer);
 		
 		/*
 		$("<label/>", {"class":"breathe","text": "Alternate Views"}).appendTo(describer);
@@ -258,7 +258,7 @@ Slideshow.prototype = {
 		*/
 				
 		// Brass Tax (Right-Aligned)
-		$("<div/>",{"class":"price", "text":Slideshow.formatPrice(item.item.price)}).appendTo(describer);
+		//$("<div/>",{"class":"price", "text":Slideshow.formatPrice(item.item.price)}).appendTo(describer);
 		
 		var staples = $("<div/>", {"class":"staples"}).appendTo(describer);		
 		/*
@@ -271,7 +271,7 @@ Slideshow.prototype = {
 			self.sizingModal();
 		}).appendTo(staples);
 		
-		
+		/*
 		// Order Form
 		var purchaseForm = $("<form/>", {
 			"action":"https://aideux.foxycart.com/cart",
@@ -294,7 +294,7 @@ Slideshow.prototype = {
 			}
 		}
 		$("<input/>",{"type":"submit", "class":"button", "value":"Add To Cart"}).appendTo(purchaseForm);
-		
+		*/
 		
 		// Lingers
 		$("<div/>", {"class":"quote", "text": item.style.quote}).appendTo(describer);
